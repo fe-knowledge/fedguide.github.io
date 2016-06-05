@@ -1,0 +1,40 @@
+{
+  "name": "fed-guide",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./index.js",
+  "author": "听着情歌流泪 <develop@lingtal.com>",
+  "homepage": "http://fedguide.nmtree.cn/",
+  "description": "FED Guide for websites",
+  "bugs": "https://github.com/fe-knowledge/fedguide.github.io/issues",
+  "dependencies": {
+    "octicons": "3.4.1",
+    "gitbook-markdown-css": "1.0.1"
+  },
+  "devDependencies": {
+    "del": "1.1.1",
+    "gitbook-logos": "git+https://github.com/GitbookIO/logos.git#2.0.2",
+    "gulp": "^3.8.11",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-connect": "2.2.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-gh-pages": "0.5.1",
+    "gulp-header": "^1.8.2",
+    "gulp-jekyll": "0.0.0",
+    "gulp-less": "3.0.2",
+    "gulp-postcss": "^6.1.1",
+    "gulp-rename": "^1.2.2",
+    "lodash": "3.9.3",
+    "merge-stream": "0.1.7",
+    "run-sequence": "1.1.4"
+  },
+  "scripts": {
+    "start": "gulp",
+    "release": "gulp release",
+    "postinstall": "cp -R ./node_modules/octicons/octicons ./assets/fonts/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fe-knowledge/fedguide.github.io.git"
+  }
+}
