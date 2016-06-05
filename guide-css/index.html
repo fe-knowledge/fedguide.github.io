@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="FED Guide for websites">
+        <meta name="author" content="听着情歌流泪 <develop@lingtal.com>">
+        <title>CSS编码规范 | 前端开发文档</title>
+        <link rel="icon" href="/assets/images/favicon.png">
+        <link rel="stylesheet" href="/docs.css">
+    </head>
+    <body>
+        <div class="gb-page-wrapper">
+            <header class="gb-page-header">
+                <div class="container">
+                    <a href="/" class="logo">
+                        <img src="/assets/images/favicon.png">
+                        <h1>前端开发文档</h1>
+                    </a>
+
+                    <!-- <a href="https://github.com/GitbookIO/styleguide" class="btn btn-link pull-right hidden-xs tooltipped tooltipped-w" aria-label="Source on Github">
+                        <i class="octicon octicon-mark-github"></i>
+                    </a>
+                    <a href="https://www.gitbook.com" class="btn btn-link pull-right hidden-xs">Return to GitBook.com</a> -->
+                </div>
+            </header>
+
+            <div class="gb-page-body">
+                <div class="gb-page-inner">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                
+<div class="panel panel-default">
+    <div class="list-group">
+        
+        <a href="/" class="list-group-item ">概述</a>
+        
+        <a href="/team/" class="list-group-item ">FE小分队成员</a>
+        
+        <a href="/svn/" class="list-group-item ">前端SVN介绍</a>
+        
+        <a href="/guide-html/" class="list-group-item ">HTML编码规范</a>
+        
+        <a href="/guide-css/" class="list-group-item active">CSS编码规范</a>
+        
+        <a href="/guide-js/" class="list-group-item ">JavaScript编码规范</a>
+        
+        <a href="/guide-module/" class="list-group-item ">模块编码规范</a>
+        
+        <a href="/pcui/" class="list-group-item ">海边PC站框架</a>
+        
+    </div>
+</div>
+
+                            </div>
+                            <div class="col-md-9">
+                                <div class="gb-markdown">
+                                    <h2 id="css">CSS编码规范</h2>
+<hr />
+
+<h3 id="section">编码规范</h3>
+<p>CSS样式表是一个序列通用字符集，传输和存储过程中，这些字符必须由支持 US-ASCII（例如 UTF-8, ISO 8859-x, SHIFT JIS 等）字符编码方式编译</p>
+
+<p>文档外链样式表的编码可以由以下各项按照由高到低的优先级顺序决定：</p>
+
+<ul>
+  <li>HTTP “Content-Type” 字段参数 “charset”（或其它协议相似的参数）</li>
+  <li>BOM（byte-order mark）和（或）@charset</li>
+  <li>Link 中的元数据设置（如果有的话）</li>
+  <li>引用样式表字符集或文档编码（如果有的话）</li>
+  <li>假定为 UTF-8 编码</li>
+</ul>
+
+<p>更多关于样式编码,请参阅：<a href="http://www.w3.org/TR/2011/REC-CSS2-20110607/syndata.html#charset">CSS style sheet representation</a></p>
+
+<h3 id="section-1">代码风格</h3>
+
+<h4 id="section-2">代码格式化</h4>
+<p>样式书写一般有两种：一种是紧凑格式 (Compact)</p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.hb-fed</span><span class="p">{</span> <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span><span class="nl">width</span><span class="p">:</span> <span class="m">50px</span><span class="p">;}</span></code></pre></figure>
+
+<p>一种是展开格式（Expanded）</p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.hb-fed</span><span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<h4 id="section-3">代码大小写</h4>
+<p>样式选择器，属性名，属性值关键字全部使用小写字母书写，属性字符串允许使用大小写。</p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* 推荐 */</span>
+<span class="nc">.hb-fed</span><span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span><span class="nb">block</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* 不推荐 */</span>
+<span class="nc">.HB-FED</span><span class="p">{</span>
+    <span class="py">DISPLAY</span><span class="p">:</span><span class="n">BLOCK</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<h4 id="section-4">选择器</h4>
+<ul>
+  <li>尽量少用通用选择器 <code class="highlighter-rouge">*</code></li>
+  <li>不使用 ID 选择器</li>
+  <li>不使用无具体语义定义的标签选择器</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* 推荐 */</span>
+<span class="nc">.hb-fed</span> <span class="p">{}</span>
+<span class="nc">.hb-fed</span> <span class="nt">li</span> <span class="p">{}</span>
+<span class="nc">.hb-fed</span> <span class="nt">li</span> <span class="nt">p</span><span class="p">{}</span>
+
+<span class="c">/* 不推荐 */</span>
+<span class="o">*</span><span class="p">{}</span>
+<span class="nf">#hb-fed</span> <span class="p">{}</span>
+<span class="nc">.hb-fed</span> <span class="nt">div</span><span class="p">{}</span></code></pre></figure>
+
+<h4 id="section-5">属性值引号</h4>
+<p>css属性值需要用到引号时，统一使用单引号</p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* 推荐 */</span>
+<span class="nc">.hb-fed</span> <span class="p">{</span>
+	<span class="nl">font-family</span><span class="p">:</span> <span class="s2">'Hiragino Sans GB'</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* 不推荐 */</span>
+<span class="nc">.hb-fed</span> <span class="p">{</span>
+	<span class="nl">font-family</span><span class="p">:</span> <span class="s1">"Hiragino Sans GB"</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<h4 id="section-6">属性书写顺序</h4>
+<p>建议遵循以下顺序：</p>
+
+<ul>
+  <li>布局定位属性：display / position / float / clear / visibility / overflow</li>
+  <li>自身属性：width / height / margin / padding / border / background</li>
+  <li>文本属性：color / font / text-decoration / text-align / vertical-align / white- space / break-word</li>
+  <li>其他属性（CSS3）：content / cursor / border-radius / box-shadow / text-shadow / background:linear-gradient …</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.hb-fed</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
+    <span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
+    <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="m">10px</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">20px</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="n">Arial</span><span class="p">,</span> <span class="s2">'Helvetica Neue'</span><span class="p">,</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="m">#333</span><span class="p">;</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">.5</span><span class="p">);</span>
+    <span class="nl">-webkit-border-radius</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+    <span class="nl">-moz-border-radius</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+    <span class="nl">-o-border-radius</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+    <span class="nl">-ms-border-radius</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+    <span class="nl">border-radius</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>更多属性顺序,请参阅：<a href="https://www.mozilla.org/css/base/content.css">mozilla官方属性顺序推荐</a></p>
+
+<h4 id="css3">CSS3浏览器私有前缀写法</h4>
+<p>CSS3 浏览器私有前缀在前，标准前缀在后</p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.hb-fed</span> <span class="p">{</span>
+    <span class="nl">-webkit-border-radius</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+    <span class="nl">-moz-border-radius</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+    <span class="nl">-o-border-radius</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+    <span class="nl">-ms-border-radius</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+    <span class="nl">border-radius</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>更多关于浏览器私有前辍写法,请参阅：<a href="http://www.w3.org/TR/2011/REC-CSS2-20110607/syndata.html#vendor-keywords">Vendor-specific extensions</a></p>
+
+<h3 id="section-7">注释规范</h3>
+<ul>
+  <li>注释以字符 <code class="highlighter-rouge">/*</code> 开始，以字符 <code class="highlighter-rouge">*/</code> 结束</li>
+  <li>注释不能嵌套</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">/*注释*/</code></pre></figure>
+
+<h4 id="section-8">模块注释</h4>
+<p>注释内容第一个字符和最后一个字符都是一个空格字符，<code class="highlighter-rouge">/*</code> 与 模块信息描述占一行，多个横线分隔符-与 <code class="highlighter-rouge">*/</code> 占一行，行与行之间相隔两行</p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* 模块 A
+---------------------------------------------------------------- */</span>
+<span class="nc">.mod-a</span> <span class="p">{}</span>
+
+
+<span class="c">/* 模块 B
+---------------------------------------------------------------- */</span>
+<span class="nc">.mod-b</span> <span class="p">{}</span></code></pre></figure>
+
+<h4 id="section-9">文件信息注释</h4>
+<p>在样式文件编码声明 <code class="highlighter-rouge">@charset</code> 语句下面注明页面名称、作者、创建日期等信息</p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="k">@charset</span> <span class="s1">"UTF-8"</span><span class="p">;</span>
+<span class="c">/**
+ * @desc File Info
+ * @author Author Name
+ * @date 2016-06-06
+ */</span></code></pre></figure>
+
+<h3 id="section-10">重置样式</h3>
+<blockquote>
+  <p>系统内部已经默认重置样式</p>
+</blockquote>
+
+<h4 id="section-11">移动端</h4>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="o">*</span> <span class="p">{</span> <span class="nl">-webkit-tap-highlight-color</span><span class="p">:</span> <span class="nb">transparent</span><span class="p">;</span> <span class="nl">outline</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="nl">vertical-align</span><span class="p">:</span> <span class="nb">baseline</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">body</span><span class="o">,</span> <span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span><span class="o">,</span> <span class="nt">h4</span><span class="o">,</span> <span class="nt">h5</span><span class="o">,</span> <span class="nt">h6</span><span class="o">,</span> <span class="nt">hr</span><span class="o">,</span> <span class="nt">p</span><span class="o">,</span> <span class="nt">blockquote</span><span class="o">,</span> <span class="nt">dl</span><span class="o">,</span> <span class="nt">dt</span><span class="o">,</span> <span class="nt">dd</span><span class="o">,</span> <span class="nt">ul</span><span class="o">,</span> <span class="nt">ol</span><span class="o">,</span> <span class="nt">li</span><span class="o">,</span> <span class="nt">pre</span><span class="o">,</span> <span class="nt">form</span><span class="o">,</span> <span class="nt">fieldset</span><span class="o">,</span> <span class="nt">legend</span><span class="o">,</span> <span class="nt">button</span><span class="o">,</span> <span class="nt">input</span><span class="o">,</span> <span class="nt">textarea</span><span class="o">,</span> <span class="nt">th</span><span class="o">,</span> <span class="nt">td</span> <span class="p">{</span> <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="nl">vertical-align</span><span class="p">:</span> <span class="nb">baseline</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">img</span> <span class="p">{</span> <span class="nl">border</span><span class="p">:</span> <span class="m">0</span> <span class="nb">none</span><span class="p">;</span> <span class="nl">vertical-align</span><span class="p">:</span> <span class="nb">top</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">i</span><span class="o">,</span> <span class="nt">em</span> <span class="p">{</span> <span class="nl">font-style</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">ol</span><span class="o">,</span> <span class="nt">ul</span> <span class="p">{</span> <span class="nl">list-style</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">input</span><span class="o">,</span> <span class="nt">select</span><span class="o">,</span> <span class="nt">button</span><span class="o">,</span> <span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span><span class="o">,</span> <span class="nt">h4</span><span class="o">,</span> <span class="nt">h5</span><span class="o">,</span> <span class="nt">h6</span> <span class="p">{</span> <span class="nl">font-size</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span> <span class="nl">font-family</span><span class="p">:</span> <span class="nb">inherit</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">table</span> <span class="p">{</span> <span class="nl">border-collapse</span><span class="p">:</span> <span class="nb">collapse</span><span class="p">;</span> <span class="nl">border-spacing</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">a</span> <span class="p">{</span> <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span> <span class="nl">color</span><span class="p">:</span> <span class="m">#666</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">body</span> <span class="p">{</span> <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span> <span class="nl">min-width</span><span class="p">:</span> <span class="m">320px</span><span class="p">;</span> <span class="nl">max-width</span><span class="p">:</span> <span class="m">640px</span><span class="p">;</span> <span class="nl">height</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span> <span class="nl">font-size</span><span class="p">:</span> <span class="m">14px</span><span class="p">;</span> <span class="nl">font-family</span><span class="p">:</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="n">STHeiti</span> <span class="n">STXihei</span><span class="p">,</span> <span class="n">Microsoft</span> <span class="n">JhengHei</span><span class="p">,</span> <span class="n">Microsoft</span> <span class="n">YaHei</span><span class="p">,</span> <span class="n">Arial</span><span class="p">;</span> <span class="nl">line-height</span><span class="p">:</span> <span class="m">1.5</span><span class="p">;</span> <span class="nl">color</span><span class="p">:</span> <span class="m">#666</span><span class="p">;</span> <span class="nl">-webkit-text-size-adjust</span><span class="p">:</span> <span class="m">100%</span> <span class="cp">!important</span><span class="p">;</span> <span class="py">text-size-adjust</span><span class="p">:</span> <span class="m">100%</span> <span class="cp">!important</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="err">"</span><span class="nt">text</span><span class="err">"</span><span class="o">],</span> <span class="nt">textarea</span> <span class="p">{</span> <span class="nl">-webkit-appearance</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span> <span class="nl">-moz-appearance</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span> <span class="nl">appearance</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span> <span class="p">}</span></code></pre></figure>
+
+<h4 id="pc">PC端</h4>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">html</span><span class="o">,</span> <span class="nt">body</span><span class="o">,</span> <span class="nt">div</span><span class="o">,</span> <span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span><span class="o">,</span> <span class="nt">h4</span><span class="o">,</span> <span class="nt">h5</span><span class="o">,</span> <span class="nt">h6</span><span class="o">,</span> <span class="nt">p</span><span class="o">,</span> <span class="nt">dl</span><span class="o">,</span> <span class="nt">dt</span><span class="o">,</span> <span class="nt">dd</span><span class="o">,</span> <span class="nt">ol</span><span class="o">,</span> <span class="nt">ul</span><span class="o">,</span> <span class="nt">li</span><span class="o">,</span> <span class="nt">fieldset</span><span class="o">,</span> <span class="nt">form</span><span class="o">,</span> <span class="nt">label</span><span class="o">,</span> <span class="nt">input</span><span class="o">,</span> <span class="nt">legend</span><span class="o">,</span> <span class="nt">table</span><span class="o">,</span> <span class="nt">caption</span><span class="o">,</span> <span class="nt">tbody</span><span class="o">,</span> <span class="nt">tfoot</span><span class="o">,</span> <span class="nt">thead</span><span class="o">,</span> <span class="nt">tr</span><span class="o">,</span> <span class="nt">th</span><span class="o">,</span> <span class="nt">td</span><span class="o">,</span> <span class="nt">textarea</span><span class="o">,</span> <span class="nt">article</span><span class="o">,</span> <span class="nt">aside</span><span class="o">,</span> <span class="nt">audio</span><span class="o">,</span> <span class="nt">canvas</span><span class="o">,</span> <span class="nt">figure</span><span class="o">,</span> <span class="nt">footer</span><span class="o">,</span> <span class="nt">header</span><span class="o">,</span> <span class="nt">mark</span><span class="o">,</span> <span class="nt">menu</span><span class="o">,</span> <span class="nt">nav</span><span class="o">,</span> <span class="nt">section</span><span class="o">,</span> <span class="nt">time</span><span class="o">,</span> <span class="nt">video</span> <span class="p">{</span> <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="nl">padding</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">h3</span><span class="o">,</span> <span class="nt">h4</span><span class="o">,</span> <span class="nt">h5</span><span class="o">,</span> <span class="nt">h6</span> <span class="p">{</span> <span class="nl">font-size</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span> <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">normal</span> <span class="p">}</span>
+<span class="nt">article</span><span class="o">,</span> <span class="nt">aside</span><span class="o">,</span> <span class="nt">dialog</span><span class="o">,</span> <span class="nt">figure</span><span class="o">,</span> <span class="nt">footer</span><span class="o">,</span> <span class="nt">header</span><span class="o">,</span> <span class="nt">hgroup</span><span class="o">,</span> <span class="nt">nav</span><span class="o">,</span> <span class="nt">section</span><span class="o">,</span> <span class="nt">blockquote</span> <span class="p">{</span> <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">ul</span><span class="o">,</span> <span class="nt">ol</span> <span class="p">{</span> <span class="nl">list-style</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">img</span> <span class="p">{</span> <span class="nl">border</span><span class="p">:</span> <span class="m">0</span> <span class="nb">none</span><span class="p">;</span> <span class="nl">vertical-align</span><span class="p">:</span> <span class="nb">top</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">blockquote</span><span class="o">,</span> <span class="nt">q</span> <span class="p">{</span> <span class="nl">quotes</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">blockquote</span><span class="nd">:before</span><span class="o">,</span> <span class="nt">blockquote</span><span class="nd">:after</span><span class="o">,</span> <span class="nt">q</span><span class="nd">:before</span><span class="o">,</span> <span class="nt">q</span><span class="nd">:after</span> <span class="p">{</span> <span class="nl">content</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">table</span> <span class="p">{</span> <span class="nl">border-collapse</span><span class="p">:</span> <span class="nb">collapse</span><span class="p">;</span> <span class="nl">border-spacing</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">strong</span><span class="o">,</span> <span class="nt">em</span><span class="o">,</span> <span class="nt">i</span> <span class="p">{</span> <span class="nl">font-style</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span> <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">normal</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">ins</span> <span class="p">{</span> <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">underline</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">del</span> <span class="p">{</span> <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">line-through</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">mark</span> <span class="p">{</span> <span class="nl">background</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">input</span><span class="nd">::-ms-clear</span> <span class="p">{</span> <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span> <span class="cp">!important</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">body</span> <span class="p">{</span> <span class="nl">font</span><span class="p">:</span> <span class="m">12px</span><span class="p">/</span><span class="m">1.5</span> <span class="err">\</span><span class="m">5</span><span class="n">FAE</span><span class="err">\</span><span class="m">8</span><span class="n">F6F</span><span class="err">\</span><span class="m">96</span><span class="n">C5</span><span class="err">\</span><span class="m">9</span><span class="n">ED1</span><span class="p">,</span> <span class="err">\</span><span class="m">5</span><span class="n">B8B</span><span class="err">\</span><span class="m">4</span><span class="n">F53</span><span class="p">,</span> <span class="s1">"Hiragino Sans GB"</span><span class="p">,</span> <span class="n">STHeiti</span><span class="p">,</span> <span class="s1">"WenQuanYi Micro Hei"</span><span class="p">,</span> <span class="s1">"Droid Sans Fallback"</span><span class="p">,</span> <span class="n">SimSun</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span> <span class="nl">background</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">a</span> <span class="p">{</span> <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span> <span class="nl">color</span><span class="p">:</span> <span class="m">#333</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">a</span><span class="nd">:hover</span> <span class="p">{</span> <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">underline</span><span class="p">;</span> <span class="p">}</span></code></pre></figure>
+
+<h3 id="section-12">常用查询语句</h3>
+<p>媒体查询类型浏览器支持情况：<a href="http://cssmediaqueries.com/overview.html">CSS3 Media Queries overview</a></p>
+
+<h4 id="section-13">常用查询语句</h4>
+<p>判断设备横竖屏</p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* 横屏 */</span>
+<span class="k">@media</span> <span class="n">all</span> <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span> <span class="p">:</span><span class="nb">landscape</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* 竖屏 */</span>
+<span class="k">@media</span> <span class="n">all</span> <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span> <span class="p">:</span><span class="nb">portrait</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span></code></pre></figure>
+
+<p>判断设备宽高
+* 设备宽度大于 320px 小于 640px */</p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="k">@media</span> <span class="n">all</span> <span class="n">and</span> <span class="p">(</span><span class="n">min-width</span><span class="p">:</span><span class="m">320px</span><span class="p">)</span> <span class="n">and</span> <span class="p">(</span><span class="n">max-width</span><span class="p">:</span><span class="m">640px</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span></code></pre></figure>
+
+<p>判断设备像素比</p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* 设备像素比为 1 */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">1</span><span class="p">),</span> <span class="n">only</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">min-device-pixel-ratio</span><span class="p">:</span> <span class="m">1</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* 设备像素比为 1.5 */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">1.5</span><span class="p">),</span> <span class="n">only</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">min-device-pixel-ratio</span><span class="p">:</span> <span class="m">1.5</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* 设备像素比为 2 */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">2</span><span class="p">),</span> <span class="n">only</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">min-device-pixel-ratio</span><span class="p">:</span> <span class="m">2</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span></code></pre></figure>
+
+<h3 id="section-14">常用设备设置</h3>
+
+<h4 id="iphones">iPhones</h4>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* ----------- iPhone 4 and 4S ----------- */</span>
+
+<span class="c">/* Portrait and Landscape */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">min-device-width</span><span class="p">:</span> <span class="m">320px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">max-device-width</span><span class="p">:</span> <span class="m">480px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">2</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* Portrait */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">min-device-width</span><span class="p">:</span> <span class="m">320px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">max-device-width</span><span class="p">:</span> <span class="m">480px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">2</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span><span class="p">:</span> <span class="nb">portrait</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="c">/* Landscape */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">min-device-width</span><span class="p">:</span> <span class="m">320px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">max-device-width</span><span class="p">:</span> <span class="m">480px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">2</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span><span class="p">:</span> <span class="nb">landscape</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* ----------- iPhone 5 and 5S ----------- */</span>
+
+<span class="c">/* Portrait and Landscape */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">min-device-width</span><span class="p">:</span> <span class="m">320px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">max-device-width</span><span class="p">:</span> <span class="m">568px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">2</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* Portrait */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">min-device-width</span><span class="p">:</span> <span class="m">320px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">max-device-width</span><span class="p">:</span> <span class="m">568px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">2</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span><span class="p">:</span> <span class="nb">portrait</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="c">/* Landscape */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">min-device-width</span><span class="p">:</span> <span class="m">320px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">max-device-width</span><span class="p">:</span> <span class="m">568px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">2</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span><span class="p">:</span> <span class="nb">landscape</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* ----------- iPhone 6 ----------- */</span>
+
+<span class="c">/* Portrait and Landscape */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">min-device-width</span><span class="p">:</span> <span class="m">375px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">max-device-width</span><span class="p">:</span> <span class="m">667px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">2</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* Portrait */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">min-device-width</span><span class="p">:</span> <span class="m">375px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">max-device-width</span><span class="p">:</span> <span class="m">667px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">2</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span><span class="p">:</span> <span class="nb">portrait</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* Landscape */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">min-device-width</span><span class="p">:</span> <span class="m">375px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">max-device-width</span><span class="p">:</span> <span class="m">667px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">2</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span><span class="p">:</span> <span class="nb">landscape</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* ----------- iPhone 6+ ----------- */</span>
+
+<span class="c">/* Portrait and Landscape */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">min-device-width</span><span class="p">:</span> <span class="m">414px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">max-device-width</span><span class="p">:</span> <span class="m">736px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">3</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* Portrait */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">min-device-width</span><span class="p">:</span> <span class="m">414px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">max-device-width</span><span class="p">:</span> <span class="m">736px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">3</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span><span class="p">:</span> <span class="nb">portrait</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* Landscape */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">min-device-width</span><span class="p">:</span> <span class="m">414px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">max-device-width</span><span class="p">:</span> <span class="m">736px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">3</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span><span class="p">:</span> <span class="nb">landscape</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span></code></pre></figure>
+
+<h4 id="galaxy-phones">Galaxy Phones</h4>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* ----------- Galaxy S3 ----------- */</span>
+
+<span class="c">/* Portrait and Landscape */</span>
+<span class="k">@media</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-width</span><span class="p">:</span> <span class="m">320px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-height</span><span class="p">:</span> <span class="m">640px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-device-pixel-ratio</span><span class="p">:</span> <span class="m">2</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* Portrait */</span>
+<span class="k">@media</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-width</span><span class="p">:</span> <span class="m">320px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-height</span><span class="p">:</span> <span class="m">640px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-device-pixel-ratio</span><span class="p">:</span> <span class="m">2</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span><span class="p">:</span> <span class="nb">portrait</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* Landscape */</span>
+<span class="k">@media</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-width</span><span class="p">:</span> <span class="m">320px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-height</span><span class="p">:</span> <span class="m">640px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-device-pixel-ratio</span><span class="p">:</span> <span class="m">2</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span><span class="p">:</span> <span class="nb">landscape</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* ----------- Galaxy S4 ----------- */</span>
+
+<span class="c">/* Portrait and Landscape */</span>
+<span class="k">@media</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-width</span><span class="p">:</span> <span class="m">320px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-height</span><span class="p">:</span> <span class="m">640px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-device-pixel-ratio</span><span class="p">:</span> <span class="m">3</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* Portrait */</span>
+<span class="k">@media</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-width</span><span class="p">:</span> <span class="m">320px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-height</span><span class="p">:</span> <span class="m">640px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-device-pixel-ratio</span><span class="p">:</span> <span class="m">3</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span><span class="p">:</span> <span class="nb">portrait</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* Landscape */</span>
+<span class="k">@media</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-width</span><span class="p">:</span> <span class="m">320px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-height</span><span class="p">:</span> <span class="m">640px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-device-pixel-ratio</span><span class="p">:</span> <span class="m">3</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span><span class="p">:</span> <span class="nb">landscape</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* ----------- Galaxy S5 ----------- */</span>
+
+<span class="c">/* Portrait and Landscape */</span>
+<span class="k">@media</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-width</span><span class="p">:</span> <span class="m">360px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-height</span><span class="p">:</span> <span class="m">640px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-device-pixel-ratio</span><span class="p">:</span> <span class="m">3</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* Portrait */</span>
+<span class="k">@media</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-width</span><span class="p">:</span> <span class="m">360px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-height</span><span class="p">:</span> <span class="m">640px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-device-pixel-ratio</span><span class="p">:</span> <span class="m">3</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span><span class="p">:</span> <span class="nb">portrait</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* Landscape */</span>
+<span class="k">@media</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-width</span><span class="p">:</span> <span class="m">360px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-height</span><span class="p">:</span> <span class="m">640px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-device-pixel-ratio</span><span class="p">:</span> <span class="m">3</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span><span class="p">:</span> <span class="nb">landscape</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span></code></pre></figure>
+
+<h4 id="htc-phones">HTC Phones</h4>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* ----------- HTC One ----------- */</span>
+
+<span class="c">/* Portrait and Landscape */</span>
+<span class="k">@media</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-width</span><span class="p">:</span> <span class="m">360px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-height</span><span class="p">:</span> <span class="m">640px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-device-pixel-ratio</span><span class="p">:</span> <span class="m">3</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* Portrait */</span>
+<span class="k">@media</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-width</span><span class="p">:</span> <span class="m">360px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-height</span><span class="p">:</span> <span class="m">640px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-device-pixel-ratio</span><span class="p">:</span> <span class="m">3</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span><span class="p">:</span> <span class="nb">portrait</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* Landscape */</span>
+<span class="k">@media</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-width</span><span class="p">:</span> <span class="m">360px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">device-height</span><span class="p">:</span> <span class="m">640px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-device-pixel-ratio</span><span class="p">:</span> <span class="m">3</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span><span class="p">:</span> <span class="nb">landscape</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span></code></pre></figure>
+
+<h4 id="ipads">iPads</h4>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* ----------- iPad mini ----------- */</span>
+
+<span class="c">/* Portrait and Landscape */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">min-device-width</span><span class="p">:</span> <span class="m">768px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">max-device-width</span><span class="p">:</span> <span class="m">1024px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">1</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* Portrait */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">min-device-width</span><span class="p">:</span> <span class="m">768px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">max-device-width</span><span class="p">:</span> <span class="m">1024px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span><span class="p">:</span> <span class="nb">portrait</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">1</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* Landscape */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">min-device-width</span><span class="p">:</span> <span class="m">768px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">max-device-width</span><span class="p">:</span> <span class="m">1024px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span><span class="p">:</span> <span class="nb">landscape</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">1</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* ----------- iPad 1 and 2 ----------- */</span>
+
+<span class="c">/* Portrait and Landscape */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">min-device-width</span><span class="p">:</span> <span class="m">768px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">max-device-width</span><span class="p">:</span> <span class="m">1024px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">1</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* Portrait */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">min-device-width</span><span class="p">:</span> <span class="m">768px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">max-device-width</span><span class="p">:</span> <span class="m">1024px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span><span class="p">:</span> <span class="nb">portrait</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">1</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* Landscape */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">min-device-width</span><span class="p">:</span> <span class="m">768px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">max-device-width</span><span class="p">:</span> <span class="m">1024px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span><span class="p">:</span> <span class="nb">landscape</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">1</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* ----------- iPad 3 and 4 ----------- */</span>
+
+<span class="c">/* Portrait and Landscape */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">min-device-width</span><span class="p">:</span> <span class="m">768px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">max-device-width</span><span class="p">:</span> <span class="m">1024px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">2</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* Portrait */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">min-device-width</span><span class="p">:</span> <span class="m">768px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">max-device-width</span><span class="p">:</span> <span class="m">1024px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span><span class="p">:</span> <span class="nb">portrait</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">2</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c">/* Landscape */</span>
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">min-device-width</span><span class="p">:</span> <span class="m">768px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">max-device-width</span><span class="p">:</span> <span class="m">1024px</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">orientation</span><span class="p">:</span> <span class="nb">landscape</span><span class="p">)</span>
+  <span class="n">and</span> <span class="p">(</span><span class="n">-webkit-min-device-pixel-ratio</span><span class="p">:</span> <span class="m">2</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span></code></pre></figure>
+
+<h3 id="section-15">移动端常用私有属性</h3>
+<p>目前两大主流移动平台为 iOS 和 Android，有不少带 -webkit- 前辍的 CSS 私有属性以及一些 iOS only 属性，当中好些属性在日常需求中经常应用到。</p>
+
+<p>WebKit CSS 属性中的一部分已经被包含在 CSS 规范草案中，并且可能成为最后的推荐标准，但目前仍然是试验性的属性，还有一些属性是不规范的属性，它们没有出现在跟踪规范中。</p>
+
+<h4 id="webkit-scrollbar">-webkit-scrollbar</h4>
+<p><code class="highlighter-rouge">-webkit-scrollbar</code> 是-webkit-私有的伪元素，用于对拥有overflow属性的区域 自定义滚动条的样式。</p>
+
+<p>譬如，为了隐藏滚动条，你可以这么做：</p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.scroll</span><span class="nd">::-webkit-scrollbar</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>除了对整个滚动条的控制外，Webkit还提供了控制对滚动条各组成部分的表现渲染的伪元素，甚至具体到滚动条的各种状态行为的伪类。</p>
+
+<h5 id="section-16">滚动条各块组成表现渲染的伪元素</h5>
+<p>一般而言，滚动条的主要组成部分包括：</p>
+
+<ul>
+  <li>滚动按钮 — 滚动按钮的夹角则被称为滚动角(corner)。</li>
+  <li>轨道 — 轨道(track)可以进一步分为轨枕(track pieces) 和滑块(thumb)。
+Webkit则根据滚动条各组成部分，提供了不同的伪元素来自定义样式。</li>
+</ul>
+
+<p><code class="highlighter-rouge">::-webkit-scrollbar</code>：滚动条整体部分。可设置width、height、background、border等。</p>
+
+<p><code class="highlighter-rouge">::-webkit-scrollbar-button</code>：滚动条两端的按钮。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果。</p>
+
+<p><code class="highlighter-rouge">::-webkit-scrollbar-track</code>：轨道。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果。</p>
+
+<p><code class="highlighter-rouge">::-webkit-scrollbar-track-piece</code>：轨枕，也就是除去滚动滑块的部分。</p>
+
+<p><code class="highlighter-rouge">::-webkit-scrollbar-thumb</code>：滚动滑块，也就是滚动条里面可以拖动的那部分。</p>
+
+<p><code class="highlighter-rouge">::-webkit-scrollbar-corner</code>：滚动按钮的夹角则被称为滚动角。</p>
+
+<p><code class="highlighter-rouge">::-webkit-resizer</code>：用于定义右下角拖动块的样式。</p>
+
+<p>需要注意的是：若是水平滚动条，则width属性不起作用，height属性用来控制滚动条相应部分竖直方向高度；若是竖直滚动条，则height属性不起作用，width属性用来控制相应部分的宽度。</p>
+
+<h5 id="section-17">滚动条各块组成的伪元素</h5>
+<p>下面的伪类可以应用到上面的伪元素中。
+<code class="highlighter-rouge">:horizontal</code>：选择水平方向的滚动条。</p>
+
+<p><code class="highlighter-rouge">:vertical</code>：选择垂直方向的滚动条。</p>
+
+<p><code class="highlighter-rouge">:decrement</code>：适用于滚动按钮和轨枕。选择能够使得视窗位置递减状态(例如，垂直滚动条向上滚动，水平滚动条向左滚动。)的滚动按钮或轨枕。</p>
+
+<p><code class="highlighter-rouge">:increment</code>：适用于滚动按钮和轨枕。选择能够使得视窗位置递增状态(例如，垂直滚动条向下滚动，水平滚动条向右滚动。)的滚动按钮或轨枕。</p>
+
+<p><code class="highlighter-rouge">:start</code>：适用于滚动按钮和轨枕。选择位于滚动滑块前边的滚动按钮和轨枕。</p>
+
+<p><code class="highlighter-rouge">:end</code>：适用于滚动按钮和轨枕。选择位于滚动滑块后边的滚动按钮和轨枕。</p>
+
+<p><code class="highlighter-rouge">:double-button</code>：适用于滚动按钮和轨枕。选中紧挨着一对按钮的轨枕以及位于滚动条某一端的一对按钮中的其中一个滚动按钮。</p>
+
+<p><code class="highlighter-rouge">:single-button</code>：适用于滚动按钮和轨枕。选中紧挨着仅一个按钮的轨枕以及位于滚动条某一端的仅它本身一个的滚动按钮。</p>
+
+<p><code class="highlighter-rouge">:no-button</code>：适用于轨枕。选中轨道结束位置没有按钮的轨枕。</p>
+
+<p><code class="highlighter-rouge">:corner-present</code>：适用于选中滚动角不存在的滚动条。</p>
+
+<p><code class="highlighter-rouge">:window-inactive</code>：适用于所有滚动条，选中焦点不在该视窗的滚动区域。</p>
+
+<p>另外，<code class="highlighter-rouge">:enabled</code>、<code class="highlighter-rouge">:disabled</code>、<code class="highlighter-rouge">:hover</code>、和<code class="highlighter-rouge">:active</code>等伪类同样在滚动条中适用。</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="gb-page-footer">
+                <div class="container">
+                    <ul class="menu">
+                        <li class="pull-right">
+                            <span class="service-info">Copyright Haibian 2016</span>
+                        </li>
+                        <li>
+                            <a href="/">返回顶部</a>
+                        </li>
+                        <li>
+                            <a href="javascript:viod(0)">Version 1.0.0</a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

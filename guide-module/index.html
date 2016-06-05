@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="FED Guide for websites">
+        <meta name="author" content="听着情歌流泪 <develop@lingtal.com>">
+        <title>模块编码规范 | 前端开发文档</title>
+        <link rel="icon" href="/assets/images/favicon.png">
+        <link rel="stylesheet" href="/docs.css">
+    </head>
+    <body>
+        <div class="gb-page-wrapper">
+            <header class="gb-page-header">
+                <div class="container">
+                    <a href="/" class="logo">
+                        <img src="/assets/images/favicon.png">
+                        <h1>前端开发文档</h1>
+                    </a>
+
+                    <!-- <a href="https://github.com/GitbookIO/styleguide" class="btn btn-link pull-right hidden-xs tooltipped tooltipped-w" aria-label="Source on Github">
+                        <i class="octicon octicon-mark-github"></i>
+                    </a>
+                    <a href="https://www.gitbook.com" class="btn btn-link pull-right hidden-xs">Return to GitBook.com</a> -->
+                </div>
+            </header>
+
+            <div class="gb-page-body">
+                <div class="gb-page-inner">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                
+<div class="panel panel-default">
+    <div class="list-group">
+        
+        <a href="/" class="list-group-item ">概述</a>
+        
+        <a href="/team/" class="list-group-item ">FE小分队成员</a>
+        
+        <a href="/svn/" class="list-group-item ">前端SVN介绍</a>
+        
+        <a href="/guide-html/" class="list-group-item ">HTML编码规范</a>
+        
+        <a href="/guide-css/" class="list-group-item ">CSS编码规范</a>
+        
+        <a href="/guide-js/" class="list-group-item ">JavaScript编码规范</a>
+        
+        <a href="/guide-module/" class="list-group-item active">模块编码规范</a>
+        
+        <a href="/pcui/" class="list-group-item ">海边PC站框架</a>
+        
+    </div>
+</div>
+
+                            </div>
+                            <div class="col-md-9">
+                                <div class="gb-markdown">
+                                    <h2 id="section">模块编码规范</h2>
+<hr />
+
+<h3 id="section-1">前端模块化开发的价值</h3>
+<p>随着互联网的飞速发展，前端开发越来越复杂。本文将从实际项目中遇到的问题出发，讲述模块化能解决哪些问题，以及如何使用 前端的模块化开发。</p>
+
+<h3 id="section-2">恼人的命名冲突</h3>
+<p>我们从一个简单的习惯出发。我做项目时，常常会将一些通用的、底层的功能抽象出来，独立成一个个函数，比如</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">each</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// your code</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// your code</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>并像模像样地把这些函数统一放在 util.js 里。需要用到时，引入该文件就行。这一切工作得很好，同事也很感激我提供了这么便利的工具包。</p>
+
+<p>直到团队越来越大，开始有人抱怨。</p>
+
+<blockquote>
+  <p>小娜：我想定义一个 each 方法遍历对象，但页头的 util.js 里已经定义了一个，我的只能叫 eachObject 了，好无奈。
+小萌：我自定义了一个 log 方法，为什么别人写的代码就出问题了呢？谁来帮帮我。
+小煊：我自定义了一个函数，为什么所有的js都报错了啊？</p>
+</blockquote>
+
+<p>抱怨越来越多。团队决定参照 Java 的方式，引入命名空间来解决。于是 util.js 里的代码变成了</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">org</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">org</span><span class="p">.</span><span class="nx">HB</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">org</span><span class="p">.</span><span class="nx">HB</span><span class="p">.</span><span class="nx">Utils</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">org</span><span class="p">.</span><span class="nx">HB</span><span class="p">.</span><span class="nx">Utils</span><span class="p">.</span><span class="nx">each</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">arr</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 实现代码</span>
+<span class="p">};</span>
+<span class="nx">org</span><span class="p">.</span><span class="nx">HB</span><span class="p">.</span><span class="nx">Utils</span><span class="p">.</span><span class="nx">log</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 实现代码</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>将命名空间的概念在前端中发扬光大，首推 Yahoo! 的 YUI2 项目。下面是一段真实代码，来自 Yahoo! 的一个开源项目。</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">if</span> <span class="p">(</span><span class="nx">org</span><span class="p">.</span><span class="nx">cometd</span><span class="p">.</span><span class="nx">Utils</span><span class="p">.</span><span class="nx">isString</span><span class="p">(</span><span class="nx">response</span><span class="p">))</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">org</span><span class="p">.</span><span class="nx">cometd</span><span class="p">.</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">fromJSON</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">org</span><span class="p">.</span><span class="nx">cometd</span><span class="p">.</span><span class="nx">Utils</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">response</span><span class="p">))</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>通过命名空间，的确能极大缓解冲突。但每每看到上面的代码，都忍不住充满同情。为了调用一个简单的方法，需要记住如此长的命名空间，这增加了记忆负担，同时剥夺了不少编码的乐趣。</p>
+
+<p>作为前端业界的标杆，YUI 团队下定决心解决这一问题。在 YUI3 项目中，引入了一种新的命名空间机制。</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">YUI</span><span class="p">().</span><span class="nx">use</span><span class="p">(</span><span class="s1">'node'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">Y</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Node 模块已加载好</span>
+  <span class="c1">// 下面可以通过 Y 来调用</span>
+  <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="nx">Y</span><span class="p">.</span><span class="nx">one</span><span class="p">(</span><span class="s1">'#foo'</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>话不多说，本文讲重点介绍如何来开发模块。目前，我们采用了很多开源且比较成熟的模块加载机制，我们使用的是CMD规范的模块定义。</p>
+
+<h3 id="cmd-">CMD 模块定义规范</h3>
+<p>所有 JavaScript 模块都遵循 CMD（Common Module Definition） 模块定义规范。该规范明确了模块的基本书写格式和基本交互规则。</p>
+
+<h4 id="define">define</h4>
+<p>在 CMD 规范中，一个模块就是一个文件。代码的书写格式如下：</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">define</span><span class="p">(</span><span class="nx">factory</span><span class="p">);</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">define</code> 是一个全局函数，用来定义模块。 <code class="highlighter-rouge">define</code> 接受 <code class="highlighter-rouge">factory</code> 参数，<code class="highlighter-rouge">factory</code> 可以是一个函数，也可以是一个对象或字符串。 <code class="highlighter-rouge">factory</code> 为函数时，表示是模块的构造方法。执行该构造方法，可以得到模块向外提供的接口。<code class="highlighter-rouge">factory</code> 方法在执行时，默认会传入三个参数：<code class="highlighter-rouge">require</code>、<code class="highlighter-rouge">exports</code> 和 <code class="highlighter-rouge">module</code>：</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="nx">exports</span><span class="p">,</span> <span class="nx">module</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 模块代码</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>define 也可以接受两个以上参数。字符串 id 表示模块标识，数组 deps 是模块依赖。比如：</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">define</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'jquery'</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="nx">exports</span><span class="p">,</span> <span class="nx">module</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 模块代码</span>
+<span class="p">});</span></code></pre></figure>
+
+<h4 id="exports">exports</h4>
+<p><code class="highlighter-rouge">exports</code> 是一个对象，用来向外提供模块接口。</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="nx">exports</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 对外提供 foo 属性</span>
+  <span class="nx">exports</span><span class="p">.</span><span class="nx">foo</span> <span class="o">=</span> <span class="s1">'bar'</span><span class="p">;</span>
+  <span class="c1">// 对外提供 doSomething 方法</span>
+  <span class="nx">exports</span><span class="p">.</span><span class="nx">doSomething</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{};</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>除了给 <code class="highlighter-rouge">exports</code> 对象增加成员，还可以使用 <code class="highlighter-rouge">return</code> 直接向外提供接口。</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 通过 return 直接提供接口</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">foo</span><span class="p">:</span> <span class="s1">'bar'</span><span class="p">,</span>
+    <span class="na">doSomething</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 你的一些代码</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">});</span></code></pre></figure>
+
+<h4 id="module">module</h4>
+<p><code class="highlighter-rouge">module</code> 是一个对象，上面存储了与当前模块相关联的一些属性和方法。</p>
+
+<h5 id="moduleid">module.id</h5>
+<p>模块的唯一标识。</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">define</span><span class="p">(</span><span class="s1">'id'</span><span class="p">,</span> <span class="p">[],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="nx">exports</span><span class="p">,</span> <span class="nx">module</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 模块代码</span>
+<span class="p">});</span></code></pre></figure>
+
+<h5 id="moduledependencies">module.dependencies</h5>
+<p><code class="highlighter-rouge">dependencies</code> 是一个数组，表示当前模块的依赖。</p>
+
+<h5 id="moduleexports">module.exports</h5>
+<p>当前模块对外提供的接口。 传给 <code class="highlighter-rouge">factory</code> 构造方法的 <code class="highlighter-rouge">exports</code> 参数是 <code class="highlighter-rouge">module.exports</code> 对象的一个引用。只通过 <code class="highlighter-rouge">exports</code> 参数来提供接口，有时无法满足开发者的所有需求。 比如当模块的接口是某个类的实例时，需要通过 <code class="highlighter-rouge">module.exports</code> 来实现：</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="nx">exports</span><span class="p">,</span> <span class="nx">module</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// exports 是 module.exports 的一个引用</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">===</span> <span class="nx">exports</span><span class="p">);</span> <span class="c1">// true</span>
+  <span class="c1">// 重新给 module.exports 赋值</span>
+  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SomeClass</span><span class="p">();</span>
+  <span class="c1">// exports 不再等于 module.exports</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">===</span> <span class="nx">exports</span><span class="p">);</span> <span class="c1">// false</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>如果一个文件里存在多个difine，请为每个difine定义id</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// y模块，依耐x文件</span>
+<span class="nx">define</span><span class="p">(</span><span class="s1">'y'</span><span class="p">,[</span><span class="s1">'x'</span><span class="p">],</span><span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="nx">exports</span><span class="p">,</span> <span class="nx">module</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./x'</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">.</span><span class="nx">a</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">define</span><span class="p">(</span><span class="s1">'y'</span><span class="p">,[</span><span class="s1">'x'</span><span class="p">],</span><span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="nx">exports</span><span class="p">,</span> <span class="nx">module</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">require</span><span class="p">.</span><span class="nx">async</span><span class="p">(</span><span class="s1">'y.css'</span><span class="p">);</span>  <span class="c1">// 异步加载css文件</span>
+  <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./x'</span><span class="p">);</span>  <span class="c1">// 加载依耐文件</span>
+  <span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="na">init</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">);</span>
+     <span class="p">}</span>
+  <span class="p">};</span>
+  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">y</span><span class="p">;</span> <span class="c1">// 对外暴露y模块接口。外部执行：y.init() ==&gt; 'hello';</span>
+<span class="p">});</span></code></pre></figure>
+
+<h3 id="section-3">模块的加载启动</h3>
+<p>用来在页面中加载模块。</p>
+
+<h4 id="hbuse-hbuseid-callback">HB.use HB.use(id, callback?)</h4>
+<p>通过 <code class="highlighter-rouge">use</code> 方法，可以在页面中加载任意模块：</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 加载模块 main，并在加载完成时，执行指定回调</span>
+<span class="nx">HB</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">'./main'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">main</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">main</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span>
+<span class="p">});</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">use</code> 方法还可以一次加载多个模块：</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// 并发加载模块 a 和模块 b，并在都加载完成时，执行指定回调</span>
+<span class="nx">HB</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">'./a'</span><span class="p">,</span> <span class="s1">'./b'</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">a</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span>
+  <span class="nx">b</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span>
+<span class="p">});</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">callback</code> 参数可选，省略时，表示无需回调。</p>
+
+<h4 id="dom-ready-">与 DOM ready 的关系</h4>
+<p>如果某些操作要确保在 <code class="highlighter-rouge">DOM ready</code> 后执行，需要使用 <code class="highlighter-rouge">jquery</code> 等类库来保证，比如：</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">HB</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">'jquery'</span><span class="p">,</span> <span class="s1">'./main'</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nx">main</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">main</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="p">});</span></code></pre></figure>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="gb-page-footer">
+                <div class="container">
+                    <ul class="menu">
+                        <li class="pull-right">
+                            <span class="service-info">Copyright Haibian 2016</span>
+                        </li>
+                        <li>
+                            <a href="/">返回顶部</a>
+                        </li>
+                        <li>
+                            <a href="javascript:viod(0)">Version 1.0.0</a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
