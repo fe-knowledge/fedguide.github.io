@@ -2,6 +2,7 @@
 layout: default
 title: JavaScript编码规范
 order: 6
+category: false
 ---
 
 ## JavaScript编码规范

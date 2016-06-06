@@ -63,7 +63,7 @@ gulp.task('docs-clean', function(cb) {
 // 启动本地服务器
 gulp.task('docs-server', function() {
     connect.server({
-        port: 8888,
+        port: 1024,
         root: destDocs
     });
 });
@@ -165,13 +165,7 @@ gulp.task('release-build', function(cb) {
 });
 
 // 发布一个新版本
-gulp.task('release', ['release-build', 'docs-deploy'], function(cb) {
-    // exec('npm publish', {
-    //     cwd: releaseOutput
-    // }, function(err) {
-    //     if (err) return cb(err);
-    //     cb();
-    // });
-});
+gulp.task('release', ['release-build', 'docs-deploy']);
 
+// 执行默认任务
 gulp.task('default', ['docs-test']);

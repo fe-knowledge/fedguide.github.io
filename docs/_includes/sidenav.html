@@ -1,8 +1,26 @@
 {% assign sorted_pages = site.pages | sort:"order" %}
+{% assign status = true %}
 <div class="panel panel-default">
     <div class="list-group">
         {% for p in sorted_pages %}
+        {% if p.category == false && p.published == status %}
         <a href="{{ p.url }}" class="list-group-item {% if p.url == page.url %}active{% endif %}">{{ p.title }}</a>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+{% assign cate_pages = site.pages | sort:"order" %}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">海边PC站框架</h3>
+    </div>
+    <div class="list-group">
+        {% for p in cate_pages %}
+        {% if p.category == 'PCUI' && p.published == status %}
+            <a href="{{ p.url }}" class="list-group-item {% if p.url == page.url %}active{% endif %}">{{ p.title }}</a>
+        {% endif %}
+
         {% endfor %}
     </div>
 </div>
