@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="FED Guide for websites">
+        <meta name="author" content="听着情歌流泪 <develop@lingtal.com>">
+        <title>按钮 | 前端开发文档</title>
+        <link rel="icon" href="/assets/images/favicon.png">
+        <link rel="stylesheet" href="/docs.css">
+        <link rel="stylesheet" href="http://static.haibian.com/seal/0.0.1/css/seal.min.css?t=1464955333">
+        <script src='/assets/js/jquery.min.js'></script>
+    </head>
+    <body>
+        <div class="gb-page-wrapper">
+            <header class="gb-page-header">
+                <div class="container">
+                    <a href="/" class="logo">
+                        <img src="/assets/images/favicon.png">
+                        <h1>前端开发文档</h1>
+                    </a>
+
+                    <!-- <a href="https://github.com/GitbookIO/styleguide" class="btn btn-link pull-right hidden-xs tooltipped tooltipped-w" aria-label="Source on Github">
+                        <i class="octicon octicon-mark-github"></i>
+                    </a>
+                    <a href="https://www.gitbook.com" class="btn btn-link pull-right hidden-xs">Return to GitBook.com</a> -->
+                </div>
+            </header>
+
+            <div class="gb-page-body">
+                <div class="gb-page-inner">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                
+
+<div class="panel panel-default">
+    <div class="list-group">
+        
+        
+        
+        
+        <a href="/" class="list-group-item ">概述</a>
+        
+        
+        
+        
+        
+        <a href="/team/" class="list-group-item ">FE小分队成员</a>
+        
+        
+        
+        <a href="/svn/" class="list-group-item ">前端SVN介绍</a>
+        
+        
+        
+        
+        
+        <a href="/guide-html/" class="list-group-item ">HTML编码规范</a>
+        
+        
+        
+        
+        
+        
+        
+        <a href="/guide-css/" class="list-group-item ">CSS编码规范</a>
+        
+        
+        
+        
+        
+        <a href="/guide-js/" class="list-group-item ">JavaScript编码规范</a>
+        
+        
+        
+        <a href="/guide-module/" class="list-group-item ">模块编码规范</a>
+        
+        
+    </div>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">海边PC站框架</h3>
+    </div>
+    <div class="list-group">
+        
+        
+            <a href="/pc-css/" class="list-group-item ">全局CSS</a>
+        
+
+        
+        
+
+        
+        
+            <a href="/pc-bgcolor/" class="list-group-item ">背景色</a>
+        
+
+        
+        
+
+        
+        
+
+        
+        
+            <a href="/pc-textcolor/" class="list-group-item ">文本颜色</a>
+        
+
+        
+        
+
+        
+        
+            <a href="/pc-buttons/" class="list-group-item active">按钮</a>
+        
+
+        
+        
+            <a href="/pc-helper/" class="list-group-item ">辅助类</a>
+        
+
+        
+        
+
+        
+        
+            <a href="/pc-iconfont/" class="list-group-item ">字体图标</a>
+        
+
+        
+        
+
+        
+        
+
+        
+    </div>
+</div>
+
+                            </div>
+                            <div class="col-md-9">
+                                <div class="gb-markdown">
+                                    <h2 id="span-classtext-small-title-hb-btn-span">按钮 <span class="text-small-title">（ 命名空间：hb-btn ）</span></h2>
+<hr />
+<p>可作为按钮使用的标签或元素： <code class="highlighter-rouge">&lt;a&gt;</code>、<code class="highlighter-rouge">&lt;button&gt;</code> 或 <code class="highlighter-rouge">&lt;input&gt;</code> 元素添加按钮类（button class）即可使用 HB-UI 提供的样式。</p>
+
+<div class="docs-example clearfix"><button class="hb-btn hb-btn-default" type="button">Button button</button>
+<a class="hb-btn hb-btn-default" href="#" role="button">Link button</a></div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"hb-btn hb-btn-default"</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>Button button<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"hb-btn hb-btn-default"</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">role=</span><span class="s">"button"</span><span class="nt">&gt;</span>Link button<span class="nt">&lt;/a&gt;</span></code></pre></div>
+
+<h3 id="section">按钮颜色</h3>
+
+<div class="docs-example clearfix"><button type="button" class="hb-btn hb-btn-default">（默认样式）default</button>
+<button type="button" class="hb-btn hb-btn-primary">（蓝色按钮）primary</button>
+<button type="button" class="hb-btn hb-btn-success">（绿色按钮）success</button>
+<button type="button" class="hb-btn hb-btn-warning">（橙色按钮）warning</button>
+<button type="button" class="hb-btn hb-btn-danger">（红色按钮）danger</button>
+<button type="button" class="hb-btn hb-btn-black">（黑色按钮）black</button>
+<button type="button" class="hb-btn hb-btn-link">link</button></div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"hb-btn hb-btn-default"</span><span class="nt">&gt;</span>（默认样式）default<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"hb-btn hb-btn-primary"</span><span class="nt">&gt;</span>（蓝色按钮）primary<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"hb-btn hb-btn-success"</span><span class="nt">&gt;</span>（绿色按钮）success<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"hb-btn hb-btn-warning"</span><span class="nt">&gt;</span>（橙色按钮）warning<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"hb-btn hb-btn-danger"</span><span class="nt">&gt;</span>（红色按钮）danger<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"hb-btn hb-btn-black"</span><span class="nt">&gt;</span>（黑色按钮）black<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"hb-btn hb-btn-link"</span><span class="nt">&gt;</span>link<span class="nt">&lt;/button&gt;</span></code></pre></div>
+
+<h3 id="section-1">按钮尺寸</h3>
+<p>需要让按钮具有不同尺寸吗？使用 <code class="highlighter-rouge">.hb-btn-lg</code>、<code class="highlighter-rouge">.hb-btn-sm</code> 或 <code class="highlighter-rouge">.hb-btn-xs</code> 就可以获得不同尺寸的按钮。</p>
+
+<div class="docs-example clearfix"><button type="button" class="hb-btn hb-btn-primary hb-btn-lg">（大按钮）btn-lg</button>
+<button type="button" class="hb-btn hb-btn-primary hb-btn-sm">（中等大小按钮）btn-lg</button>
+<button type="button" class="hb-btn hb-btn-primary hb-btn-xs">（小按钮）btn-lg</button></div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"hb-btn hb-btn-primary hb-btn-lg"</span><span class="nt">&gt;</span>（大按钮）btn-lg<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"hb-btn hb-btn-primary hb-btn-sm"</span><span class="nt">&gt;</span>（中等大小按钮）btn-lg<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"hb-btn hb-btn-primary hb-btn-xs"</span><span class="nt">&gt;</span>（小按钮）btn-lg<span class="nt">&lt;/button&gt;</span></code></pre></div>
+
+<h3 id="section-2">块级按钮</h3>
+<p>通过给按钮添加 <code class="highlighter-rouge">.hb-btn-block</code> 类可以将其拉伸至父元素100%的宽度，而且按钮也变为了块级（block）元素。</p>
+
+<div class="docs-example clearfix"><button type="button" class="hb-btn hb-btn-success hb-btn-block">块级按钮独占一行</button></div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"hb-btn hb-btn-success hb-btn-block"</span><span class="nt">&gt;</span>块级按钮独占一行<span class="nt">&lt;/button&gt;</span></code></pre></div>
+
+<h3 id="section-3">禁用状态</h3>
+
+<div class="docs-example clearfix"><button type="button" class="hb-btn hb-btn-success disabled">禁用按钮</button></div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"hb-btn hb-btn-success disabled"</span><span class="nt">&gt;</span>禁用按钮<span class="nt">&lt;/button&gt;</span></code></pre></div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="gb-page-footer">
+                <div class="container">
+                    <ul class="menu">
+                        <li class="pull-right">
+                            <span class="service-info">Copyright Haibian 2016</span>
+                        </li>
+                        <li>
+                            <a href="/">返回顶部</a>
+                        </li>
+                        <li>
+                            <a href="javascript:viod(0)">Version 1.0.0</a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+
+        <script>
+        $(function(){
+            $('body').css('visibility','visible');
+        });
+        </script>
+    </body>
+</html>
