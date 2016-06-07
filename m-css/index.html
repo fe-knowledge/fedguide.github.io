@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="FED Guide for websites">
         <meta name="author" content="听着情歌流泪 <develop@lingtal.com>">
-        <title>焦点图 | 前端开发文档</title>
+        <title>全局CSS | 前端开发文档</title>
         <link rel="icon" href="/assets/images/favicon.png">
         <link rel="stylesheet" href="http://static.haibian.com/seal/0.0.1/css/seal.min.css?t=1464955333">
         <link rel="stylesheet" href="/assets/css/demo.css">
@@ -200,7 +200,7 @@
 
         
         
-            <a href="/pc-slider/" class="list-group-item active">焦点图</a>
+            <a href="/pc-slider/" class="list-group-item ">焦点图</a>
         
 
         
@@ -236,7 +236,7 @@
 
         
         
-            <a href="/m-css/" class="list-group-item ">全局CSS</a>
+            <a href="/m-css/" class="list-group-item active">全局CSS</a>
         
 
         
@@ -306,62 +306,10 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="gb-markdown">
-                                    <h2 id="span-classtext-small-title-hbslider-span">焦点图 <span class="text-small-title">（ 命名空间：hbSlider ）</span></h2>
+                                    <h2 id="css">全局CSS</h2>
 <hr />
 
-<div class="docs-example clearfix"><!-- html示例 -->
-<div class="my-slider">
-    <ul>
-        <li><img src="/assets/img/slider_1.jpg" /></li>
-        <li><img src="/assets/img/slider_2.jpg" /></li>
-        <li><img src="/assets/img/slider_3.jpg" /></li>
-    </ul>
-</div>
-
-<!-- javascript示例 -->
-<script>
-// 仅作演示用
-$('.my-slider').hbSlider({
-    theme:'hb-slider-theme', // 自定义皮肤（可选）
-    autoplay: true, // 是否自动播放
-    delay: 13000, // 焦点图切换时间。默认：3000ms
-    speed: 750, // 焦点图切换速度。默认：750ms
-    arrows: {
-        prev: '<a class="slider-arrows prev"><i class="iconfont-chevron-left"></i></a>',
-        next: '<a class="slider-arrows next"><i class="iconfont-chevron-right"></i></a>'
-    },   // 左右箭头。不显示则设为：arrows:false
-    nav: true,   //  是否显示导航小圆点
-    activeClass:'active', // 选中添加的额外样式
-    hoverStop: false // 鼠标移上焦点图，是否暂停播放。默认：false
-});
-</script></div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- html示例 --&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"my-slider"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ul&gt;</span>
-        <span class="nt">&lt;li&gt;&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/slider_1.jpg"</span><span class="nt">&gt;&lt;/li&gt;</span>
-        <span class="nt">&lt;li&gt;&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/slider_2.jpg"</span><span class="nt">&gt;&lt;/li&gt;</span>
-        <span class="nt">&lt;li&gt;&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/slider_3.jpg"</span><span class="nt">&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;/ul&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-
-<span class="c">&lt;!-- javascript示例 --&gt;</span>
-<span class="nt">&lt;script&gt;</span>
-<span class="c1">// 仅作演示用</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">'.my-slider'</span><span class="p">).</span><span class="nx">hbSlider</span><span class="p">({</span>
-    <span class="na">theme</span><span class="p">:</span><span class="s1">'hb-slider-theme'</span><span class="p">,</span> <span class="c1">// 自定义皮肤（可选）</span>
-    <span class="na">autoplay</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// 是否自动播放</span>
-    <span class="na">delay</span><span class="p">:</span> <span class="mi">13000</span><span class="p">,</span> <span class="c1">// 焦点图切换时间。默认：3000ms</span>
-    <span class="na">speed</span><span class="p">:</span> <span class="mi">750</span><span class="p">,</span> <span class="c1">// 焦点图切换速度。默认：750ms</span>
-    <span class="na">arrows</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">prev</span><span class="p">:</span> <span class="s1">'&lt;a class="slider-arrows prev"&gt;&lt;i class="iconfont-chevron-left"&gt;&lt;/i&gt;&lt;/a&gt;'</span><span class="p">,</span>
-        <span class="na">next</span><span class="p">:</span> <span class="s1">'&lt;a class="slider-arrows next"&gt;&lt;i class="iconfont-chevron-right"&gt;&lt;/i&gt;&lt;/a&gt;'</span>
-    <span class="p">},</span>   <span class="c1">// 左右箭头。不显示则设为：arrows:false</span>
-    <span class="na">nav</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>   <span class="c1">//  是否显示导航小圆点</span>
-    <span class="na">activeClass</span><span class="p">:</span><span class="s1">'active'</span><span class="p">,</span> <span class="c1">// 选中添加的额外样式</span>
-    <span class="na">hoverStop</span><span class="p">:</span> <span class="kc">false</span> <span class="c1">// 鼠标移上焦点图，是否暂停播放。默认：false</span>
-<span class="p">});</span>
-<span class="nt">&lt;/script&gt;</span></code></pre></div>
-
+<p>待完善</p>
 
                                 </div>
                             </div>
