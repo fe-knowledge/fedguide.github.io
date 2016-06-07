@@ -6,7 +6,7 @@ published: true
 category: PCUI
 ---
 
-## 背景色 <span class="text-small-title">（ 命名空间：hb-bg ）</span>
+## 背景色 <span class="text-small-title">（ 命名空间：hb-bg ）</span><span class="pull-right small">更新时间：{% timeago 2016-06-07 %}</span>
 -----------
 
 和文本颜色类一样，使用任意背景色类就可以设置元素的背景。链接组件在鼠标经过时颜色会加深，就像文本颜色类一样。

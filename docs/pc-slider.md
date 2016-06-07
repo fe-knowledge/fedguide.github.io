@@ -6,7 +6,7 @@ published: true
 category: PCUI
 ---
 
-## 焦点图 <span class="text-small-title">（ 命名空间：hbSlider ）</span>
+## 焦点图 <span class="text-small-title">（ 命名空间：hbSlider ）</span><span class="pull-right small">更新时间：{% timeago 2016-06-07 %}</span>
 ----------
 {% example html %}
 <!-- html示例 -->

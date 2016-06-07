@@ -6,7 +6,7 @@ published: true
 category: PCUI
 ---
 
-## Tab切换 <span class="text-small-title">（ hbTab ）</span>
+## Tab切换 <span class="text-small-title">（ hbTab ）</span><span class="pull-right small">更新时间：{% timeago 2016-06-07 %}</span>
 ----------
 
 > <span class="text-danger"><b>注意：</b>tab默认的第一项需要加上.active类，因为第一个默认是显示的。如果需要有动画效果，请在每个 `tab-pane` 上加上 `.fade` 类且第一个tab-pane需要加上 `.in` 类

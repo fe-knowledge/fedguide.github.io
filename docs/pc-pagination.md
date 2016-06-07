@@ -6,7 +6,7 @@ published: true
 category: PCUI
 ---
 
-## 静态分页 <span class="text-small-title">（ 命名空间：hb-pagination ）</span>
+## 静态分页 <span class="text-small-title">（ 命名空间：hb-pagination ）</span><span class="pull-right small">更新时间：{% timeago 2016-06-07 %}</span>
 -----------
 
 为网站或应用提供带有展示页码的分页组件

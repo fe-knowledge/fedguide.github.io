@@ -6,7 +6,7 @@ published: true
 category: PCUI
 ---
 
-## 下拉菜单 <span class="text-small-title">（ 命名空间：hb-dropdown ）</span>
+## 下拉菜单 <span class="text-small-title">（ 命名空间：hb-dropdown ）</span><span class="pull-right small">更新时间：{% timeago 2016-06-07 %}</span>
 -----------
 
 将下拉菜单触发器和下拉菜单都包裹在 `.hb-dropdown` 里，或者另一个声明了 `position: relative;` 的元素。然后加入组成菜单的 HTML 代码。注意：下拉菜单，依耐 widget 下的 `dropdown.js`

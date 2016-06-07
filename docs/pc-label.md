@@ -6,7 +6,7 @@ published: true
 category: PCUI
 ---
 
-## 标签 <span class="text-small-title">（ 命名空间：hb-label ）</span>
+## 标签 <span class="text-small-title">（ 命名空间：hb-label ）</span><span class="pull-right small">更新时间：{% timeago 2016-06-07 %}</span>
 -----------
 
 用下面的任何一个类即可改变标签的外观。

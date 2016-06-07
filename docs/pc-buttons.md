@@ -6,7 +6,7 @@ published: true
 category: PCUI
 ---
 
-## 按钮 <span class="text-small-title">（ 命名空间：hb-btn ）</span>
+## 按钮 <span class="text-small-title">（ 命名空间：hb-btn ）</span><span class="pull-right small">更新时间：{% timeago 2016-06-07 %}</span>
 -------
 可作为按钮使用的标签或元素： `<a>`、`<button>` 或 `<input>` 元素添加按钮类（button class）即可使用 HB-UI 提供的样式。
 {% example html %}

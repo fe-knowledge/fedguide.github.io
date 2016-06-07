@@ -19,7 +19,7 @@ jekyll_timeago:
   tomorrow: '明天'
   and: '零'
   suffix: '前'
-  prefix: '更新于'
+  prefix: ''
   suffix_future: ''
   prefix_future: 'in'
   years: '年'

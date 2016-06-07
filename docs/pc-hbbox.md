@@ -6,7 +6,7 @@ published: true
 category: PCUI
 ---
 
-## 弹层 <span class="text-small-title">（ 命名空间：hbBox ）</span>
+## 弹层 <span class="text-small-title">（ 命名空间：hbBox ）</span><span class="pull-right small">更新时间：{% timeago 2016-06-07 %}</span>
 -----------
 
 弹层经过了优化，更加灵活，以弹出对话框的形式出现，具有最小和最实用的功能集。

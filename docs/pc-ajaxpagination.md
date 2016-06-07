@@ -6,7 +6,7 @@ published: true
 category: PCUI
 ---
 
-## AJAX分页 <span class="text-small-title">（ 命名空间：hb-pager ）</span>
+## AJAX分页 <span class="text-small-title">（ 命名空间：hb-pager ）</span><span class="pull-right small">更新时间：{% timeago 2016-06-07 %}</span>
 -----------
 
 为异步请求提供数据分页

@@ -6,7 +6,7 @@ published: true
 category: PCUI
 ---
 
-## Cookie <span class="text-small-title">（ 命名空间：hbCookie ）</span>
+## Cookie <span class="text-small-title">（ 命名空间：hbCookie ）</span><span class="pull-right small">更新时间：{% timeago 2016-06-07 %}</span>
 ----------
 
 海边的cookie插件，经过优化后，不但能存储字符串，同时还支持json的存储

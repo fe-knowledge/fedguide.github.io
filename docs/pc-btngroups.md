@@ -6,7 +6,7 @@ published: true
 category: PCUI
 ---
 
-## 按钮组 <span class="text-small-title">（ 命名空间：hb-btn-group ）</span>
+## 按钮组 <span class="text-small-title">（ 命名空间：hb-btn-group ）</span><span class="pull-right small">更新时间：{% timeago 2016-06-07 %}</span>
 -----------
 
 通过按钮组容器把一组按钮放在同一行里

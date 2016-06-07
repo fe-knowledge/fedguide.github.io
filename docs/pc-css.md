@@ -6,7 +6,7 @@ published: true
 category: PCUI
 ---
 
-## 全局CSS
+## 全局CSS <span class="pull-right small">更新时间：{% timeago 2016-06-07 %}</span>
 ---------
 
 Normalize.css
@@ -51,7 +51,7 @@ HTML 中的所有标题标签，<h1> 到 <h6> 均可使用。另外，还提供�
 <p class="text-left">文字左对齐</p>
 <p class="text-center">文字居中对齐</p>
 <p class="text-right">文字右对齐</p>
-<p class="text-justify">文字两端对齐</p>
+<p class="text-justify">文字两端对齐 文字两端对齐</p>
 {% endexample %}
 
 #### 改变大小写

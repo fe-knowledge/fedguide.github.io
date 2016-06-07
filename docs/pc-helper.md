@@ -6,7 +6,7 @@ published: true
 category: PCUI
 ---
 
-## 辅助类 <span class="text-small-title">（ 命名空间：hb-fn ）</span>
+## 辅助类 <span class="text-small-title">（ 命名空间：hb-fn ）</span><span class="pull-right small">更新时间：{% timeago 2016-06-07 %}</span>
 --------
 
 我们提供了一套常用的辅助类

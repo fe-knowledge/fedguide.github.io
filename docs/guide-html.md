@@ -6,7 +6,7 @@ published: true
 category: false
 ---
 
-## HTML编码规范
+## HTML编码规范 <span class="pull-right small">更新时间：{% timeago 2016-06-07 %}</span>
 ----------
 
 ### 编码规范

@@ -6,7 +6,7 @@ published: true
 category: PCUI
 ---
 
-## 模态框 <span class="text-small-title">（ 命名空间：$ ）</span>
+## 模态框 <span class="text-small-title">（ 命名空间：$ ）</span><span class="pull-right small">更新时间：{% timeago 2016-06-07 %}</span>
 -----------
 
 前面我们已经提供了 `hbBox` 组件，为什么我们还要再提供一个模态框的组件呢？因为：`hbBox` 适合带交互的操作提示窗，而 hbBox 是一个独立的组件，在运用的时候，需要提前加载进页面。而，模态框 我们是集成在系统的框架里的，可全站随时使用，调用更简单，几乎不需要配置，即可运用，特别适用于ajax请求的一些列交互效果。目前，我们仅对外暴露两个接口，分别是：<b class="text-warning">$.hbAlert</b>、<b class="text-warning">$.hbToast</b>、<b class="text-warning">$.hbLoading</b>

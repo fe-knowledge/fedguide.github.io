@@ -6,7 +6,7 @@ published: true
 category: false
 ---
 
-## JavaScript编码规范
+## JavaScript编码规范 <span class="pull-right small">更新时间：{% timeago 2016-06-07 %}</span>
 ----------
 
 ### 全局命名空间污染

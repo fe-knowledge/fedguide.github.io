@@ -6,7 +6,7 @@ published: true
 category: PCUI
 ---
 
-### 字体图标
+### 字体图标 <span class="pull-right small">更新时间：{% timeago 2016-06-07 %}</span>
 -----------
 
 {% example html %}
