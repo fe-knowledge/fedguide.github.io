@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="FED Guide for websites">
         <meta name="author" content="听着情歌流泪 <develop@lingtal.com>">
-        <title>文本颜色 | 前端开发文档</title>
+        <title>标签 | 前端开发文档</title>
         <link rel="icon" href="/assets/images/favicon.png">
         <link rel="stylesheet" href="http://static.haibian.com/seal/0.0.1/css/seal.min.css?t=1464955333">
         <link rel="stylesheet" href="/assets/css/demo.css">
@@ -128,7 +128,7 @@
 
         
         
-            <a href="/pc-textcolor/" class="list-group-item active">文本颜色</a>
+            <a href="/pc-textcolor/" class="list-group-item ">文本颜色</a>
         
 
         
@@ -165,7 +165,7 @@
 
         
         
-            <a href="/pc-label/" class="list-group-item ">标签</a>
+            <a href="/pc-label/" class="list-group-item active">标签</a>
         
 
         
@@ -220,23 +220,27 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="gb-markdown">
-                                    <h2 id="span-classtext-small-title-hb-bg-span">文本颜色 <span class="text-small-title">（ 命名空间：hb-bg ）</span></h2>
+                                    <h2 id="span-classtext-small-title-hb-label-span">标签 <span class="text-small-title">（ 命名空间：hb-label ）</span></h2>
 <hr />
 
-<p>通过颜色来展示意图，HBUI提供了一组工具类。这些类可以应用于链接，并且在鼠标经过时颜色可以还可以加深，就像默认的链接一样。</p>
+<p>用下面的任何一个类即可改变标签的外观。</p>
+
+<blockquote>
+  <p><span class="text-warning">请注意：目前我们提供五种外观的标签,分别是：<code class="highlighter-rouge">hb-label-default</code>、<code class="highlighter-rouge">hb-label-primary</code>、<code class="highlighter-rouge">hb-label-success</code>、<code class="highlighter-rouge">hb-label-warning</code>、<code class="highlighter-rouge">hb-label-danger</code> </span></p>
+</blockquote>
 
 <div class="docs-example clearfix"><!-- html示例 -->
-<p class="hb-text-default">海边直播FE小分队</p>
-<p class="hb-text-primary">海边直播FE小分队</p>
-<p class="hb-text-success">海边直播FE小分队</p>
-<p class="hb-text-warning">海边直播FE小分队</p>
-<p class="hb-text-danger">海边直播FE小分队</p></div>
+<span class="hb-label hb-label-default">Default</span>
+<span class="hb-label hb-label-primary">Primary</span>
+<span class="hb-label hb-label-success">Success</span>
+<span class="hb-label hb-label-warning">Warning</span>
+<span class="hb-label hb-label-danger">Danger</span></div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- html示例 --&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"hb-text-default"</span><span class="nt">&gt;</span>海边直播FE小分队<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"hb-text-primary"</span><span class="nt">&gt;</span>海边直播FE小分队<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"hb-text-success"</span><span class="nt">&gt;</span>海边直播FE小分队<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"hb-text-warning"</span><span class="nt">&gt;</span>海边直播FE小分队<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"hb-text-danger"</span><span class="nt">&gt;</span>海边直播FE小分队<span class="nt">&lt;/p&gt;</span></code></pre></div>
+<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"hb-label hb-label-default"</span><span class="nt">&gt;</span>Default<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"hb-label hb-label-primary"</span><span class="nt">&gt;</span>Primary<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"hb-label hb-label-success"</span><span class="nt">&gt;</span>Success<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"hb-label hb-label-warning"</span><span class="nt">&gt;</span>Warning<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"hb-label hb-label-danger"</span><span class="nt">&gt;</span>Danger<span class="nt">&lt;/span&gt;</span></code></pre></div>
 
 
                                 </div>

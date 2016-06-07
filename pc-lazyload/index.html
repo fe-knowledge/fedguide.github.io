@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="FED Guide for websites">
         <meta name="author" content="听着情歌流泪 <develop@lingtal.com>">
-        <title>文本颜色 | 前端开发文档</title>
+        <title>图片延迟加载 | 前端开发文档</title>
         <link rel="icon" href="/assets/images/favicon.png">
         <link rel="stylesheet" href="http://static.haibian.com/seal/0.0.1/css/seal.min.css?t=1464955333">
         <link rel="stylesheet" href="/assets/css/demo.css">
@@ -128,7 +128,7 @@
 
         
         
-            <a href="/pc-textcolor/" class="list-group-item active">文本颜色</a>
+            <a href="/pc-textcolor/" class="list-group-item ">文本颜色</a>
         
 
         
@@ -205,7 +205,7 @@
 
         
         
-            <a href="/pc-lazyload/" class="list-group-item ">图片延迟加载</a>
+            <a href="/pc-lazyload/" class="list-group-item active">图片延迟加载</a>
         
 
         
@@ -220,23 +220,35 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="gb-markdown">
-                                    <h2 id="span-classtext-small-title-hb-bg-span">文本颜色 <span class="text-small-title">（ 命名空间：hb-bg ）</span></h2>
+                                    <h2 id="span-classtext-small-title-hblazyload-span">图片延迟加载 <span class="text-small-title">（ hbLazyload ）</span></h2>
 <hr />
 
-<p>通过颜色来展示意图，HBUI提供了一组工具类。这些类可以应用于链接，并且在鼠标经过时颜色可以还可以加深，就像默认的链接一样。</p>
-
 <div class="docs-example clearfix"><!-- html示例 -->
-<p class="hb-text-default">海边直播FE小分队</p>
-<p class="hb-text-primary">海边直播FE小分队</p>
-<p class="hb-text-success">海边直播FE小分队</p>
-<p class="hb-text-warning">海边直播FE小分队</p>
-<p class="hb-text-danger">海边直播FE小分队</p></div>
+<img class="hb-lazy" data-img="/assets/img/slider_1.jpg" height="300" width="840" />
+
+<!-- javascript示例 -->
+<script>
+// 仅作演示用
+$("img.hb-lazy").hbLazyload();
+
+// $("img.hb-lazy").hbLazyload({
+//    placeholder : '' // 占位符(loading图片)。可不设置
+// });
+
+</script></div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- html示例 --&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"hb-text-default"</span><span class="nt">&gt;</span>海边直播FE小分队<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"hb-text-primary"</span><span class="nt">&gt;</span>海边直播FE小分队<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"hb-text-success"</span><span class="nt">&gt;</span>海边直播FE小分队<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"hb-text-warning"</span><span class="nt">&gt;</span>海边直播FE小分队<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"hb-text-danger"</span><span class="nt">&gt;</span>海边直播FE小分队<span class="nt">&lt;/p&gt;</span></code></pre></div>
+<span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"hb-lazy"</span> <span class="na">data-img=</span><span class="s">"/assets/img/slider_1.jpg"</span> <span class="na">height=</span><span class="s">"300"</span> <span class="na">width=</span><span class="s">"840"</span><span class="nt">&gt;</span>
+
+<span class="c">&lt;!-- javascript示例 --&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+<span class="c1">// 仅作演示用</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">"img.hb-lazy"</span><span class="p">).</span><span class="nx">hbLazyload</span><span class="p">();</span>
+
+<span class="c1">// $("img.hb-lazy").hbLazyload({</span>
+<span class="c1">//    placeholder : '' // 占位符(loading图片)。可不设置</span>
+<span class="c1">// });</span>
+
+<span class="nt">&lt;/script&gt;</span></code></pre></div>
 
 
                                 </div>

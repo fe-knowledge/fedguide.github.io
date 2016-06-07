@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="FED Guide for websites">
         <meta name="author" content="听着情歌流泪 <develop@lingtal.com>">
-        <title>文本颜色 | 前端开发文档</title>
+        <title>模态框 | 前端开发文档</title>
         <link rel="icon" href="/assets/images/favicon.png">
         <link rel="stylesheet" href="http://static.haibian.com/seal/0.0.1/css/seal.min.css?t=1464955333">
         <link rel="stylesheet" href="/assets/css/demo.css">
@@ -128,7 +128,7 @@
 
         
         
-            <a href="/pc-textcolor/" class="list-group-item active">文本颜色</a>
+            <a href="/pc-textcolor/" class="list-group-item ">文本颜色</a>
         
 
         
@@ -190,7 +190,7 @@
 
         
         
-            <a href="/pc-modal/" class="list-group-item ">模态框</a>
+            <a href="/pc-modal/" class="list-group-item active">模态框</a>
         
 
         
@@ -220,23 +220,107 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="gb-markdown">
-                                    <h2 id="span-classtext-small-title-hb-bg-span">文本颜色 <span class="text-small-title">（ 命名空间：hb-bg ）</span></h2>
+                                    <h2 id="span-classtext-small-title--span">模态框 <span class="text-small-title">（ 命名空间：$ ）</span></h2>
 <hr />
 
-<p>通过颜色来展示意图，HBUI提供了一组工具类。这些类可以应用于链接，并且在鼠标经过时颜色可以还可以加深，就像默认的链接一样。</p>
+<p>前面我们已经提供了 <code class="highlighter-rouge">hbBox</code> 组件，为什么我们还要再提供一个模态框的组件呢？因为：<code class="highlighter-rouge">hbBox</code> 适合带交互的操作提示窗，而 hbBox 是一个独立的组件，在运用的时候，需要提前加载进页面。而，模态框 我们是集成在系统的框架里的，可全站随时使用，调用更简单，几乎不需要配置，即可运用，特别适用于ajax请求的一些列交互效果。目前，我们仅对外暴露两个接口，分别是：<b class="text-warning">$.hbAlert</b>、<b class="text-warning">$.hbToast</b>、<b class="text-warning">$.hbLoading</b></p>
 
 <div class="docs-example clearfix"><!-- html示例 -->
-<p class="hb-text-default">海边直播FE小分队</p>
-<p class="hb-text-primary">海边直播FE小分队</p>
-<p class="hb-text-success">海边直播FE小分队</p>
-<p class="hb-text-warning">海边直播FE小分队</p>
-<p class="hb-text-danger">海边直播FE小分队</p></div>
+<button type="button" class="hb-btn hb-btn-default" id="open_alert">alert 形式</button>
+<button type="button" class="hb-btn hb-btn-danger" id="open_toast">toast 形式</button>
+<button type="button" class="hb-btn hb-btn-success" id="open_loading">loading 形式</button>
+
+<!-- javascript示例 -->
+<script>
+// 仅作演示用
+
+// alert 形式
+$('body').on('click','#open_alert',function(){
+    $.hbAlert('海边直播FE小分队');
+});
+
+
+// 调用方法一： $.hbAlert(msg,title,callback);
+// 调用方法二： $.hbAlert(msg,callback);
+
+// 配置：
+// text : 需要提示的文字，必选
+// title: 提示标题，选填
+// callback: 回调函数
+
+
+// toast形式
+$('body').on('click','#open_toast',function(){
+    $.hbToast('海边直播FE小分队')
+});
+
+
+// 调用方法：$.hbToast(msg,autoClose,addClass);
+// 配置：
+// msg : 需要提示的文字，必选
+// autoClose: 自动关闭时间，默认2s
+// addClass: 需要添加的额外样式，选填
+
+
+// alert 形式
+$('body').on('click','#open_loading',function(){
+    $.hbLoading();
+});
+
+
+// 调用方法：$.hbLoading({'color':''});
+// 关闭loading：
+// $.hideLoading();
+
+</script></div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- html示例 --&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"hb-text-default"</span><span class="nt">&gt;</span>海边直播FE小分队<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"hb-text-primary"</span><span class="nt">&gt;</span>海边直播FE小分队<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"hb-text-success"</span><span class="nt">&gt;</span>海边直播FE小分队<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"hb-text-warning"</span><span class="nt">&gt;</span>海边直播FE小分队<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"hb-text-danger"</span><span class="nt">&gt;</span>海边直播FE小分队<span class="nt">&lt;/p&gt;</span></code></pre></div>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"hb-btn hb-btn-default"</span> <span class="na">id=</span><span class="s">"open_alert"</span><span class="nt">&gt;</span>alert 形式<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"hb-btn hb-btn-danger"</span> <span class="na">id=</span><span class="s">"open_toast"</span><span class="nt">&gt;</span>toast 形式<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"hb-btn hb-btn-success"</span> <span class="na">id=</span><span class="s">"open_loading"</span><span class="nt">&gt;</span>loading 形式<span class="nt">&lt;/button&gt;</span>
+
+<span class="c">&lt;!-- javascript示例 --&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+<span class="c1">// 仅作演示用</span>
+
+<span class="c1">// alert 形式</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'body'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'#open_alert'</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">hbAlert</span><span class="p">(</span><span class="s1">'海边直播FE小分队'</span><span class="p">);</span>
+<span class="p">});</span>
+
+
+<span class="c1">// 调用方法一： $.hbAlert(msg,title,callback);</span>
+<span class="c1">// 调用方法二： $.hbAlert(msg,callback);</span>
+
+<span class="c1">// 配置：</span>
+<span class="c1">// text : 需要提示的文字，必选</span>
+<span class="c1">// title: 提示标题，选填</span>
+<span class="c1">// callback: 回调函数</span>
+
+
+<span class="c1">// toast形式</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'body'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'#open_toast'</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">hbToast</span><span class="p">(</span><span class="s1">'海边直播FE小分队'</span><span class="p">)</span>
+<span class="p">});</span>
+
+
+<span class="c1">// 调用方法：$.hbToast(msg,autoClose,addClass);</span>
+<span class="c1">// 配置：</span>
+<span class="c1">// msg : 需要提示的文字，必选</span>
+<span class="c1">// autoClose: 自动关闭时间，默认2s</span>
+<span class="c1">// addClass: 需要添加的额外样式，选填</span>
+
+
+<span class="c1">// alert 形式</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'body'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'#open_loading'</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">hbLoading</span><span class="p">();</span>
+<span class="p">});</span>
+
+
+<span class="c1">// 调用方法：$.hbLoading({'color':''});</span>
+<span class="c1">// 关闭loading：</span>
+<span class="c1">// $.hideLoading();</span>
+
+<span class="nt">&lt;/script&gt;</span></code></pre></div>
 
 
                                 </div>
