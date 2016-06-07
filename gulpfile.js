@@ -12,9 +12,13 @@ var nano = require('gulp-cssnano');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('gulp-autoprefixer');
 var header = require('gulp-header');
+var uglify = require('gulp-uglify');
 var exec = require('child_process').exec;
 var ghPages = require('gulp-gh-pages');
 
+var iconfont = require( 'gulp-iconfont' );
+var consolidate = require('gulp-consolidate');
+var async = require('async');
 var pkg = require('./package.json');
 var styleguide = require('./index.js');
 
@@ -41,18 +45,65 @@ gulp.task('docs-jekyll', function (cb) {
         cb();
     });
 });
+/*
+gulp.task('docs-iconfonts', function(done){
+    var runTimestamp = (+new Date());
+    function mapGlyphs(glyph) {
+        return { name: glyph.name, codepoint: glyph.unicode[0].charCodeAt(0) }
+    }
+    var iconStream = gulp.src(['./docs/svgs/*.svg'])
+    .pipe(iconfont({
+        fontName: 'iconfont',
+        formats: ['ttf', 'eot', 'woff','svg'],
+        timestamp:runTimestamp,
+        normalize:true
+    }));
 
+    async.parallel([
+        function handleGlyphs (cb) {
+            iconStream.on('glyphs', function(glyphs, options) {
+                gulp.src('./docs/svgs/fontTpl.less')
+                .pipe(consolidate('lodash', {
+                    glyphs: glyphs.map(mapGlyphs),
+                    fontName: 'iconfont',
+                    fontStyle: 'normal',
+                    fontWeight: 'normal',
+                    fontPath: '/assets/fonts/',
+                    className: 'iconfont'
+                }))
+                .pipe(rename('fonts.less'))
+                .pipe(gulp.dest('./docs/less'))
+                .on('finish', cb);
+            });
+        },
+        function handleFonts (cb) {
+            iconStream
+            .pipe(gulp.dest('./assets/fonts'))
+            .on('finish', cb)
+        }
+    ], done);
+});
+*/
 // 构造文档css
-gulp.task('docs-styles', function() {
+gulp.task('docs-styles',function() {
     return gulp.src('./docs/less/main.less')
     .pipe(less(styleguide.less))
     .pipe(postcss([autoprefixer]))
     .pipe(nano())
-    .pipe(rename('docs.css'))
+    .pipe(rename('docs.min.css'))
     .pipe(header(banner, {pkg:pkg} ))
     .pipe(gulp.dest(destDocs));
-});
 
+});
+gulp.task('docs-js',function(){
+    return gulp.src('./docs/js/*.js')
+    .pipe(uglify())
+    .pipe(rename(function (path) {
+        path.basename += '.min';
+    }))
+    .pipe(header(banner, {pkg:pkg} ))
+    .pipe(gulp.dest(destDocs));
+})
 // 清除发布目录
 gulp.task('docs-clean', function(cb) {
     del([
@@ -80,7 +131,7 @@ gulp.task('docs-assets', function() {
 
 // 构造文档文件
 gulp.task('docs-build', function(cb) {
-    runSequence('docs-jekyll', 'docs-styles', 'docs-assets', cb);
+    runSequence('docs-jekyll', 'docs-styles','docs-js','docs-assets', cb);
 });
 
 // 发布文档文件
@@ -93,10 +144,11 @@ gulp.task('docs-deploy', ['docs-build'], function() {
 gulp.task('docs-test', function(cb) {
     gulp.watch([
         'less/**/*.less',
-        'docs/less/**/*.less'
+        'docs/less/**/*.less',
     ], ['docs-styles']);
     var watcher = gulp.watch([
         'docs/*.md',
+        'docs/js/**/*.js',
         'docs/_layouts/*.html',
         'docs/_includes/*.html',
         'docs/_includes/*.md'

@@ -7,7 +7,6 @@ function moduleContainer(mod) {
         , '..')
 }
 
-
 module.exports = {
     assets: path.resolve(__dirname, 'assets'),
     less: {
