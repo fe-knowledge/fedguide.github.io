@@ -432,17 +432,17 @@
 <h3 id="api">API名称定义</h3>
 
 <ul>
-  <li><b>web2native<font color="#dc0000">XXX</font></b></li>
-  <li><b>native2web<font color="#dc0000">XXX</font></b></li>
+  <li><b>native<font color="#dc0000">XXX</font></b></li>
+  <li><b>web<font color="#dc0000">XXX</font></b></li>
 </ul>
 
-<p><b>web2native</b> 含义：H5的接口，提供给客户端调用。“XXX” 表示具体的方法名</p>
+<p><b>native</b> 含义：客户端的接口，提供给H5调用。“XXX” 表示具体的方法名</p>
 
-<p><b>native2web</b> 含义：客户端的接口，提供给H5调用。“XXX” 表示具体的方法名</p>
+<p><b>web</b> 含义：H5的接口，提供给客户端调用。“XXX” 表示具体的方法名</p>
 
 <h3 id="api-1">API列表</h3>
 
-<h4 id="web2nativesetanswer">web2nativeSetAnswer</h4>
+<h4 id="nativesetanswer">nativeSetAnswer</h4>
 
 <blockquote>
   <p>p 提交答案(H5提交答案到客户端)</p>
@@ -473,7 +473,7 @@ var answer = {
 
 <span class="nt">&lt;/script&gt;</span></code></pre></div>
 
-<h4 id="native2webgetanswer">native2webGetAnswer</h4>
+<h4 id="nativegetanswer">nativeGetAnswer</h4>
 
 <blockquote>
   <p>获取答案(H5主动获取客户端缓存的答案)</p>
@@ -481,13 +481,73 @@ var answer = {
 
 <p>返回数据：</p>
 
+<div class="docs-example clearfix">客户端返回答案给H5：
+<script>
+
+var answer = {
+    uid:'10000', // 用户UID(暂定是否需要)
+    uuid:'abcdefg01abcdefg01', // 题目的UUID,唯一标识
+    type:1,     // 题目类型 1:单选，2:多选 .....(类型暂定，需要后端配合定义)
+    answers:[{
+        answer : 'A',   // 答案项
+        url:'',     // 音频或图片URL （有则返回，无则为空）
+        length:'' // 音频时长，单位：S （有则返回，无则为空）
+    },{
+        answer : 'A',   // 答案项
+        url:'',     // 音频或图片URL （有则返回，无则为空）
+        length:'' // 音频时长，单位：S （有则返回，无则为空）
+    },{
+        // ........
+    }]
+}
+
+</script></div>
+<div class="highlight"><pre><code class="language-html" data-lang="html">客户端返回答案给H5：
+<span class="nt">&lt;script&gt;</span>
+
+<span class="kd">var</span> <span class="nx">answer</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">uid</span><span class="p">:</span><span class="s1">'10000'</span><span class="p">,</span> <span class="c1">// 用户UID(暂定是否需要)</span>
+    <span class="na">uuid</span><span class="p">:</span><span class="s1">'abcdefg01abcdefg01'</span><span class="p">,</span> <span class="c1">// 题目的UUID,唯一标识</span>
+    <span class="na">type</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>     <span class="c1">// 题目类型 1:单选，2:多选 .....(类型暂定，需要后端配合定义)</span>
+    <span class="na">answers</span><span class="p">:[{</span>
+        <span class="na">answer</span> <span class="p">:</span> <span class="s1">'A'</span><span class="p">,</span>   <span class="c1">// 答案项</span>
+        <span class="na">url</span><span class="p">:</span><span class="s1">''</span><span class="p">,</span>     <span class="c1">// 音频或图片URL （有则返回，无则为空）</span>
+        <span class="na">length</span><span class="p">:</span><span class="s1">''</span> <span class="c1">// 音频时长，单位：S （有则返回，无则为空）</span>
+    <span class="p">},{</span>
+        <span class="na">answer</span> <span class="p">:</span> <span class="s1">'A'</span><span class="p">,</span>   <span class="c1">// 答案项</span>
+        <span class="na">url</span><span class="p">:</span><span class="s1">''</span><span class="p">,</span>     <span class="c1">// 音频或图片URL （有则返回，无则为空）</span>
+        <span class="na">length</span><span class="p">:</span><span class="s1">''</span> <span class="c1">// 音频时长，单位：S （有则返回，无则为空）</span>
+    <span class="p">},{</span>
+        <span class="c1">// ........</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+
+<span class="nt">&lt;/script&gt;</span></code></pre></div>
+
+<p>界面回退时，H5主动获取答案，用于显示用户之前的答案项</p>
+
+<h4 id="webgetimageurl">webGetImageUrl</h4>
+<blockquote>
+  <p>客户端上传完图片，返回给H5预览</p>
+</blockquote>
+
 <div class="docs-example clearfix"><script>
 
 var answer = {
     uid:'10000', // 用户UID(暂定是否需要)
     uuid:'abcdefg01abcdefg01', // 题目的UUID,唯一标识
     type:1,     // 题目类型 1:单选，2:多选 .....(类型暂定，需要后端配合定义)
-    answers:['A','B','...'], // 多选多答案列表，顺序从上至下
+    answers:[{
+        answer : 'A',   // 答案项
+        url:'',     // 音频或图片URL （有则返回，无则为空）
+        length:'' // 音频时长，单位：S （有则返回，无则为空）
+    },{
+        answer : 'A',   // 答案项
+        url:'',     // 音频或图片URL （有则返回，无则为空）
+        length:'' // 音频时长，单位：S （有则返回，无则为空）
+    },{
+        // ........
+    }]
 }
 
 </script></div>
@@ -497,37 +557,85 @@ var answer = {
     <span class="na">uid</span><span class="p">:</span><span class="s1">'10000'</span><span class="p">,</span> <span class="c1">// 用户UID(暂定是否需要)</span>
     <span class="na">uuid</span><span class="p">:</span><span class="s1">'abcdefg01abcdefg01'</span><span class="p">,</span> <span class="c1">// 题目的UUID,唯一标识</span>
     <span class="na">type</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>     <span class="c1">// 题目类型 1:单选，2:多选 .....(类型暂定，需要后端配合定义)</span>
-    <span class="na">answers</span><span class="p">:[</span><span class="s1">'A'</span><span class="p">,</span><span class="s1">'B'</span><span class="p">,</span><span class="s1">'...'</span><span class="p">],</span> <span class="c1">// 多选多答案列表，顺序从上至下</span>
+    <span class="na">answers</span><span class="p">:[{</span>
+        <span class="na">answer</span> <span class="p">:</span> <span class="s1">'A'</span><span class="p">,</span>   <span class="c1">// 答案项</span>
+        <span class="na">url</span><span class="p">:</span><span class="s1">''</span><span class="p">,</span>     <span class="c1">// 音频或图片URL （有则返回，无则为空）</span>
+        <span class="na">length</span><span class="p">:</span><span class="s1">''</span> <span class="c1">// 音频时长，单位：S （有则返回，无则为空）</span>
+    <span class="p">},{</span>
+        <span class="na">answer</span> <span class="p">:</span> <span class="s1">'A'</span><span class="p">,</span>   <span class="c1">// 答案项</span>
+        <span class="na">url</span><span class="p">:</span><span class="s1">''</span><span class="p">,</span>     <span class="c1">// 音频或图片URL （有则返回，无则为空）</span>
+        <span class="na">length</span><span class="p">:</span><span class="s1">''</span> <span class="c1">// 音频时长，单位：S （有则返回，无则为空）</span>
+    <span class="p">},{</span>
+        <span class="c1">// ........</span>
+    <span class="p">}]</span>
 <span class="p">}</span>
 
 <span class="nt">&lt;/script&gt;</span></code></pre></div>
 
-<p>界面回退时，H5主动获取答案，用于显示用户之前的答案项</p>
-
-<h4 id="web2nativesetimageurl">web2nativeSetImageUrl</h4>
-<blockquote>
-  <p>上传图片(H5主动通知客户端呼出相机拍照)</p>
-</blockquote>
-
-<p>参数：JSON字符串(UID,uuid,type,answers)，注意：此时的answers为空数组</p>
-
-<h4 id="web2nativeopenvoice">web2nativeOpenVoice(是否需要次接口)</h4>
+<h4 id="nativeopenvoice">nativeOpenVoice</h4>
 <blockquote>
   <p>打开语音(客户端主动呼出录音功能,录音结束后，客户端自动跳转下一题)</p>
 </blockquote>
 
-<h4 id="web2nativeuploadvoice">web2nativeUploadVoice(待定)</h4>
+<p>参数： UUID</p>
 
-<p>参数：JSON字符串(UID,uuid,type,answers)，注意：此时的answers为空数组</p>
+<div class="docs-example clearfix"><script>
+// 提供UUId给客户端
+var answer = 'UUID';
 
-<h4 id="native2webopenvoice">native2webOpenVoice(待定)</h4>
+</script></div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script&gt;</span>
+<span class="c1">// 提供UUId给客户端</span>
+<span class="kd">var</span> <span class="nx">answer</span> <span class="o">=</span> <span class="s1">'UUID'</span><span class="p">;</span>
+
+<span class="nt">&lt;/script&gt;</span></code></pre></div>
+
+<h4 id="webgetvoiceurl">webGetVoiceUrl</h4>
 <blockquote>
-  <p>H5监听客户端的反馈信息</p>
+  <p>获取客户端返回的语言url，返回给H5进行试听</p>
 </blockquote>
 
-<p>接收参数：JSON字符串(uuid,本地音频文件)</p>
+<div class="docs-example clearfix"><script>
 
-<p>当H5接收到客户端返回的音频文件，则显示当前的录音</p>
+var answer = {
+    uid:'10000', // 用户UID(暂定是否需要)
+    uuid:'abcdefg01abcdefg01', // 题目的UUID,唯一标识
+    type:1,     // 题目类型 1:单选，2:多选 .....(类型暂定，需要后端配合定义)
+    answers:[{
+        answer : 'A',   // 答案项
+        url:'',     // 音频或图片URL （有则返回，无则为空）
+        length:'' // 音频时长，单位：S （有则返回，无则为空）
+    },{
+        answer : 'A',   // 答案项
+        url:'',     // 音频或图片URL （有则返回，无则为空）
+        length:'' // 音频时长，单位：S （有则返回，无则为空）
+    },{
+        // ........
+    }]
+}
+
+</script></div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script&gt;</span>
+
+<span class="kd">var</span> <span class="nx">answer</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">uid</span><span class="p">:</span><span class="s1">'10000'</span><span class="p">,</span> <span class="c1">// 用户UID(暂定是否需要)</span>
+    <span class="na">uuid</span><span class="p">:</span><span class="s1">'abcdefg01abcdefg01'</span><span class="p">,</span> <span class="c1">// 题目的UUID,唯一标识</span>
+    <span class="na">type</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>     <span class="c1">// 题目类型 1:单选，2:多选 .....(类型暂定，需要后端配合定义)</span>
+    <span class="na">answers</span><span class="p">:[{</span>
+        <span class="na">answer</span> <span class="p">:</span> <span class="s1">'A'</span><span class="p">,</span>   <span class="c1">// 答案项</span>
+        <span class="na">url</span><span class="p">:</span><span class="s1">''</span><span class="p">,</span>     <span class="c1">// 音频或图片URL （有则返回，无则为空）</span>
+        <span class="na">length</span><span class="p">:</span><span class="s1">''</span> <span class="c1">// 音频时长，单位：S （有则返回，无则为空）</span>
+    <span class="p">},{</span>
+        <span class="na">answer</span> <span class="p">:</span> <span class="s1">'A'</span><span class="p">,</span>   <span class="c1">// 答案项</span>
+        <span class="na">url</span><span class="p">:</span><span class="s1">''</span><span class="p">,</span>     <span class="c1">// 音频或图片URL （有则返回，无则为空）</span>
+        <span class="na">length</span><span class="p">:</span><span class="s1">''</span> <span class="c1">// 音频时长，单位：S （有则返回，无则为空）</span>
+    <span class="p">},{</span>
+        <span class="c1">// ........</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+
+<span class="nt">&lt;/script&gt;</span></code></pre></div>
+
 
                                 </div>
                             </div>
