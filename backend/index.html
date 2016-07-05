@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="FED Guide for websites">
         <meta name="author" content="听着情歌流泪 <develop@lingtal.com>">
-        <title>全局CSS | 前端开发文档</title>
+        <title>后端数据接口 | 前端开发文档</title>
         <link rel="icon" href="/assets/images/favicon.png">
         <link rel="stylesheet" href="http://static.haibian.com/seal/0.0.1/css/seal.min.css?t=1464955333">
         <link rel="stylesheet" href="/assets/css/demo.css">
@@ -171,7 +171,7 @@
 
         
         
-            <a href="/backend/" class="list-group-item ">后端数据接口</a>
+            <a href="/backend/" class="list-group-item active">后端数据接口</a>
         
 
         
@@ -244,7 +244,7 @@
 
         
         
-            <a href="/pc-css/" class="list-group-item active">全局CSS</a>
+            <a href="/pc-css/" class="list-group-item ">全局CSS</a>
         
 
         
@@ -448,82 +448,112 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="gb-markdown">
-                                    <h2 id="css-span-classpull-right-small4--span">全局CSS <span class="pull-right small">更新时间：4 周 前</span></h2>
+                                    <h2 id="section">题型</h2>
 <hr />
 
-<p>Normalize.css</p>
+<table>
+  <tbody>
+    <tr>
+      <td><strong>名称</strong></td>
+      <td><strong>参数</strong></td>
+      <td><strong>值</strong></td>
+    </tr>
+    <tr>
+      <td>单选</td>
+      <td>DANXUAN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>多选</td>
+      <td>DUOXUAN</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>多选多</td>
+      <td>DUOXUANDUO</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>普通型填空</td>
+      <td>PUTONGXINGTIANKONG</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>判断</td>
+      <td>PANDUAN</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>配对</td>
+      <td>PEIDUI</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>排序</td>
+      <td>PAIXU</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>解答</td>
+      <td>JIEDA</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>复合</td>
+      <td>FUHE</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>选择型填空</td>
+      <td>XUANZEXINGTIANKONG</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>为了增强跨浏览器表现的一致性，我们使用了 Normalize.css重置样式库。</p>
+<h2 id="section-1">题目数据字段</h2>
+<hr />
 
-<h3 id="section">布局容器</h3>
-<p>HBUI 需要为页面内容包裹一个 <code class="highlighter-rouge">.hb-ui-container</code> 容器。<code class="highlighter-rouge">.hb-ui-container</code> 类用于固定宽度。</p>
-
-<blockquote>
-  <p><span class="text-danger">请注意：由于我们的系统是按需加载模块的，为方便模块调用以及维护，模块自身所用到的css文件也是后加载的，为了防止模块的css文件没加载出来，导致页面的短暂排版错乱，临时出一个方案：在外围容器层上加上一个隐藏样式 <code class="highlighter-rouge">.hb-fn-hidden</code>,当初始化模块的时候，再移除 <code class="highlighter-rouge">.hb-fn-hidden</code></span></p>
-</blockquote>
-
-<div class="docs-example clearfix"><div class="hb-ui-container hb-fn-hidden">
-  ...
-</div></div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"hb-ui-container hb-fn-hidden"</span><span class="nt">&gt;</span>
-  ...
-<span class="nt">&lt;/div&gt;</span></code></pre></div>
-
-<h3 id="section-1">排版</h3>
-
-<h4 id="section-2">标题</h4>
-<p>HTML 中的所有标题标签，&lt;h1&gt; 到 &lt;h6&gt; 均可使用。另外，还提供了 .h1 到 .h6 类，为的是给内联（inline）属性的文本赋予标题的样式。</p>
-
-<div class="docs-example clearfix"><h1>h1. 海边直播FE小分队</h1>
-<h2>h2. 海边直播FE小分队</h2>
-<h3>h3. 海边直播FE小分队</h3>
-<h4>h4. 海边直播FE小分队</h4>
-<h5>h5. 海边直播FE小分队</h5>
-<h6>h6. 海边直播FE小分队</h6></div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1&gt;</span>h1. 海边直播FE小分队<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;h2&gt;</span>h2. 海边直播FE小分队<span class="nt">&lt;/h2&gt;</span>
-<span class="nt">&lt;h3&gt;</span>h3. 海边直播FE小分队<span class="nt">&lt;/h3&gt;</span>
-<span class="nt">&lt;h4&gt;</span>h4. 海边直播FE小分队<span class="nt">&lt;/h4&gt;</span>
-<span class="nt">&lt;h5&gt;</span>h5. 海边直播FE小分队<span class="nt">&lt;/h5&gt;</span>
-<span class="nt">&lt;h6&gt;</span>h6. 海边直播FE小分队<span class="nt">&lt;/h6&gt;</span></code></pre></div>
-
-<p>在标题内还可以包含 .small 类的元素，可以用来标记副标题。</p>
-
-<div class="docs-example clearfix"><h1>h1. 海边直播FE小分队<span class="small">PHP天团</span></h1>
-<h2>h2. 海边直播FE小分队<span class="small">PHP天团</span></h2>
-<h3>h3. 海边直播FE小分队<span class="small">PHP天团</span></h3>
-<h4>h4. 海边直播FE小分队<span class="small">PHP天团</span></h4>
-<h5>h5. 海边直播FE小分队<span class="small">PHP天团</span></h5>
-<h6>h6. 海边直播FE小分队<span class="small">PHP天团</span></h6></div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1&gt;</span>h1. 海边直播FE小分队<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"small"</span><span class="nt">&gt;</span>PHP天团<span class="nt">&lt;/span&gt;&lt;/h1&gt;</span>
-<span class="nt">&lt;h2&gt;</span>h2. 海边直播FE小分队<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"small"</span><span class="nt">&gt;</span>PHP天团<span class="nt">&lt;/span&gt;&lt;/h2&gt;</span>
-<span class="nt">&lt;h3&gt;</span>h3. 海边直播FE小分队<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"small"</span><span class="nt">&gt;</span>PHP天团<span class="nt">&lt;/span&gt;&lt;/h3&gt;</span>
-<span class="nt">&lt;h4&gt;</span>h4. 海边直播FE小分队<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"small"</span><span class="nt">&gt;</span>PHP天团<span class="nt">&lt;/span&gt;&lt;/h4&gt;</span>
-<span class="nt">&lt;h5&gt;</span>h5. 海边直播FE小分队<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"small"</span><span class="nt">&gt;</span>PHP天团<span class="nt">&lt;/span&gt;&lt;/h5&gt;</span>
-<span class="nt">&lt;h6&gt;</span>h6. 海边直播FE小分队<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"small"</span><span class="nt">&gt;</span>PHP天团<span class="nt">&lt;/span&gt;&lt;/h6&gt;</span></code></pre></div>
-
-<h4 id="section-3">对齐</h4>
-<p>通过文本对齐类，可以简单方便的将文字重新对齐。</p>
-
-<div class="docs-example clearfix"><p class="text-left">文字左对齐</p>
-<p class="text-center">文字居中对齐</p>
-<p class="text-right">文字右对齐</p>
-<p class="text-justify">文字两端对齐 文字两端对齐</p></div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-left"</span><span class="nt">&gt;</span>文字左对齐<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-center"</span><span class="nt">&gt;</span>文字居中对齐<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-right"</span><span class="nt">&gt;</span>文字右对齐<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-justify"</span><span class="nt">&gt;</span>文字两端对齐 文字两端对齐<span class="nt">&lt;/p&gt;</span></code></pre></div>
-
-<h4 id="section-4">改变大小写</h4>
-<p>通过这几个类可以改变文本的大小写（英文）。</p>
-
-<div class="docs-example clearfix"><p class="text-lowercase"> Lowercased text.    (全部小写)</p>
-<p class="text-uppercase"> Uppercased text.    (全部大写)</p>
-<p class="text-capitalize"> Capitalized text.  (首字母大写)</p></div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-lowercase"</span><span class="nt">&gt;</span> Lowercased text.    (全部小写)<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-uppercase"</span><span class="nt">&gt;</span> Uppercased text.    (全部大写)<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-capitalize"</span><span class="nt">&gt;</span> Capitalized text.  (首字母大写)<span class="nt">&lt;/p&gt;</span></code></pre></div>
-
+<table>
+  <tbody>
+    <tr>
+      <td><strong>参数</strong></td>
+      <td><strong>含义</strong></td>
+    </tr>
+    <tr>
+      <td>queId</td>
+      <td>题目ID</td>
+    </tr>
+    <tr>
+      <td>queTypeId</td>
+      <td>类型ID</td>
+    </tr>
+    <tr>
+      <td>content</td>
+      <td>题干</td>
+    </tr>
+    <tr>
+      <td>answer</td>
+      <td>正确答案</td>
+    </tr>
+    <tr>
+      <td>analysis</td>
+      <td>解析</td>
+    </tr>
+    <tr>
+      <td>difficulty</td>
+      <td>难度</td>
+    </tr>
+    <tr>
+      <td>answerList</td>
+      <td>答案选项</td>
+    </tr>
+    <tr>
+      <td>examList</td>
+      <td>考点列表</td>
+    </tr>
+  </tbody>
+</table>
 
                                 </div>
                             </div>
