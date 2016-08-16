@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="FED Guide for websites">
         <meta name="author" content="听着情歌流泪 <develop@lingtal.com>">
-        <title>Cookie | 前端开发文档</title>
+        <title>错题本 | 前端开发文档</title>
         <link rel="icon" href="/assets/img/favicon.png">
         <link rel="stylesheet" href="http://static.haibian.com/seal/0.0.1/css/seal.min.css?t=1464955333">
         <link rel="stylesheet" href="/assets/css/demo.css">
@@ -239,7 +239,7 @@
     <div class="list-group">
         
         
-            <a href="/wbook/" class="list-group-item ">错题本</a>
+            <a href="/wbook/" class="list-group-item active">错题本</a>
         
 
         
@@ -439,7 +439,7 @@
 
         
         
-            <a href="/pc-cookie/" class="list-group-item active">Cookie</a>
+            <a href="/pc-cookie/" class="list-group-item ">Cookie</a>
         
 
         
@@ -555,70 +555,142 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="gb-markdown">
-                                    <h2 id="cookie-span-classtext-small-title-hbcookie-spanspan-classpull-right-small2--span">Cookie <span class="text-small-title">（ 命名空间：hbCookie ）</span><span class="pull-right small">更新时间：2 个月 前</span></h2>
+                                    <h2 id="section">错题本</h2>
 <hr />
 
-<p>海边的cookie插件，经过优化后，不但能存储字符串，同时还支持json的存储</p>
+<h3 id="section-1">返回数据</h3>
 
-<blockquote>
-  <p><span class="text-danger"><b>注意：</b>为防止注册的cookie name被污染，也为了cookie的安全，海边cookie组件，在注册的时候，会自动加上cookie前缀: <code class="highlighter-rouge">__HB_</code></span><br />
-<span class="text-success">例如：若设置user的cookie，实际写入的cookie名为：<code class="highlighter-rouge">__HB_user</code> 。在使用的时候，您无需关注cookie前缀，前缀是系统自动添加。</span></p>
-</blockquote>
+<div class="docs-example clearfix"><script>
+{
+  "errcode": 0,
+  "data": {
+    "answer_result": true,
+    "question_detail": {
+      "id": 1,
+      "paper_id": "020ccf0568b2426d97072d9a8ab97297",
+      "ques_id": "e0687bf79e434c47b40aaf2026b816e4",
+      "course_id": 1001,
+      "chapter_id": 0,
+      "ques_type": 1,
+      "subject_id": 2,
+      "user_answer": null,
+      "last_answer_time": 0,
+      "source_id": 1,
+      "can_answer_ques": true,
+      "content": "<p>已知关于$$x$$，$$y$$的方程组$$\\left\\{ \\begin{matrix}ax+2y=1+a \\\\ 2x+2\\left( a-1 \\right)y=3 \\\\\\end{matrix} \\right.$$，分别求出当$$a$$为何值时，方程组的解为：</p>\n<p>①唯一一组解；②无解；③有无穷多组解．</p>",
+      "answer_option_list": [
+        {
+          "id": "e0fa0038ab3f441ea158789e53475b33",
+          "aoVal": "A",
+          "sort": 0,
+          "serialNum": 1,
+          "content": "①$$a\\ne 2$$且$$a\\ne -1$$；②$$a=-2$$；③$$a=-1$$"
+        },
+        {
+          "id": "522c01506bbe4935bb539978ea3b7992",
+          "aoVal": "B",
+          "sort": 1,
+          "serialNum": 1,
+          "content": "①$$a\\ne 2$$且$$a\\ne -1$$；②$$a=2$$；③$$a=-1$$"
+        },
+        {
+          "id": "98cbb1aa8fed443e891de7eb760f82c4",
+          "aoVal": "C",
+          "sort": 2,
+          "serialNum": 1,
+          "content": "①$$a\\ne 2$$且$$a\\ne -1$$；②$$a=2$$；③$$a=-2$$"
+        },
+        {
+          "id": "e92e79e13d764d8f850bdde2668d2599",
+          "aoVal": "D",
+          "sort": 3,
+          "serialNum": 1,
+          "content": "①$$a\\ne 2$$且$$a\\ne -1$$；②$$a=-2$$；③$$a=-2$$"
+        }
+      ]
+    },
+    "total": 3,
+    "ques_status": {
+      "1": {
+        "name": "我的错题",
+        "count": 3,
+        "id": 1
+      },
+      "2": {
+        "name": "已消灭错题",
+        "count": 1,
+        "id": 2
+      }
+    }
+  }
+}
+</script></div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script&gt;</span>
+<span class="p">{</span>
+  <span class="s2">"errcode"</span><span class="err">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s2">"data"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"answer_result"</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"question_detail"</span><span class="err">:</span> <span class="p">{</span>
+      <span class="s2">"id"</span><span class="err">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">"paper_id"</span><span class="err">:</span> <span class="s2">"020ccf0568b2426d97072d9a8ab97297"</span><span class="p">,</span>
+      <span class="s2">"ques_id"</span><span class="err">:</span> <span class="s2">"e0687bf79e434c47b40aaf2026b816e4"</span><span class="p">,</span>
+      <span class="s2">"course_id"</span><span class="err">:</span> <span class="mi">1001</span><span class="p">,</span>
+      <span class="s2">"chapter_id"</span><span class="err">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">"ques_type"</span><span class="err">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">"subject_id"</span><span class="err">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s2">"user_answer"</span><span class="err">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="s2">"last_answer_time"</span><span class="err">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">"source_id"</span><span class="err">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">"can_answer_ques"</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">"content"</span><span class="err">:</span> <span class="s2">"&lt;p&gt;已知关于$$x$$，$$y$$的方程组$$\\left\\{ \\begin{matrix}ax+2y=1+a \\\\ 2x+2\\left( a-1 \\right)y=3 \\\\\\end{matrix} \\right.$$，分别求出当$$a$$为何值时，方程组的解为：&lt;/p&gt;\n&lt;p&gt;①唯一一组解；②无解；③有无穷多组解．&lt;/p&gt;"</span><span class="p">,</span>
+      <span class="s2">"answer_option_list"</span><span class="err">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"e0fa0038ab3f441ea158789e53475b33"</span><span class="p">,</span>
+          <span class="s2">"aoVal"</span><span class="p">:</span> <span class="s2">"A"</span><span class="p">,</span>
+          <span class="s2">"sort"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">"serialNum"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"①$$a\\ne 2$$且$$a\\ne -1$$；②$$a=-2$$；③$$a=-1$$"</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"522c01506bbe4935bb539978ea3b7992"</span><span class="p">,</span>
+          <span class="s2">"aoVal"</span><span class="p">:</span> <span class="s2">"B"</span><span class="p">,</span>
+          <span class="s2">"sort"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s2">"serialNum"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"①$$a\\ne 2$$且$$a\\ne -1$$；②$$a=2$$；③$$a=-1$$"</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"98cbb1aa8fed443e891de7eb760f82c4"</span><span class="p">,</span>
+          <span class="s2">"aoVal"</span><span class="p">:</span> <span class="s2">"C"</span><span class="p">,</span>
+          <span class="s2">"sort"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="s2">"serialNum"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"①$$a\\ne 2$$且$$a\\ne -1$$；②$$a=2$$；③$$a=-2$$"</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"e92e79e13d764d8f850bdde2668d2599"</span><span class="p">,</span>
+          <span class="s2">"aoVal"</span><span class="p">:</span> <span class="s2">"D"</span><span class="p">,</span>
+          <span class="s2">"sort"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+          <span class="s2">"serialNum"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"①$$a\\ne 2$$且$$a\\ne -1$$；②$$a=-2$$；③$$a=-2$$"</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s2">"total"</span><span class="err">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s2">"ques_status"</span><span class="err">:</span> <span class="p">{</span>
+      <span class="s2">"1"</span><span class="err">:</span> <span class="p">{</span>
+        <span class="s2">"name"</span><span class="err">:</span> <span class="s2">"我的错题"</span><span class="p">,</span>
+        <span class="s2">"count"</span><span class="err">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s2">"id"</span><span class="err">:</span> <span class="mi">1</span>
+      <span class="p">},</span>
+      <span class="s2">"2"</span><span class="err">:</span> <span class="p">{</span>
+        <span class="s2">"name"</span><span class="err">:</span> <span class="s2">"已消灭错题"</span><span class="p">,</span>
+        <span class="s2">"count"</span><span class="err">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">"id"</span><span class="err">:</span> <span class="mi">2</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span></code></pre></div>
 
-<h3 id="section">基本用法：</h3>
-
-<p>创建一个当前站点的cookie:</p>
-
-<pre><code class="language-JS">hbCookies.set('team', 'FE小分队');
-</code></pre>
-
-<p>创建一个当前站点的cookie,并设置有效期7天:</p>
-
-<pre><code class="language-JS">hbCookies.set('team', 'FE小分队', { expires: 7 });
-</code></pre>
-
-<p>创建一个当前站点的cookie,并设置有效期7天且当前路径有效:</p>
-
-<pre><code class="language-JS">hbCookies.set('team', 'FE小分队', { expires: 7, path: '' });
-</code></pre>
-
-<p>创建一个带域名的cookie：</p>
-
-<pre><code class="language-JS">hbCookies.set('team', 'FE小分队', { domain:'haibian.com'});
-</code></pre>
-
-<p>完整的配置：</p>
-
-<pre><code class="language-JS">hbCookies.set('team', 'FE小分队', {
-    expires: 7, // 有效期（单位：天）
-    path: '',   // 路径
-    domain:'haibian.com'  //    域
-});
-</code></pre>
-
-<p>读取Cookie:</p>
-
-<pre><code class="language-JS">hbCookies.get('team'); // =&gt; 'FE小分队'
-hbCookies.get(); // =&gt; { team: 'FE小分队' }
-</code></pre>
-
-<p>删除Cookie:</p>
-
-<pre><code class="language-JS">hbCookies.remove('team');
-</code></pre>
-
-<h3 id="section-1">高级用法：</h3>
-
-<p>JSON存储:</p>
-
-<pre><code class="language-JS">hbCookies.set('name', { team: 'FE小分队' });
-</code></pre>
-
-<p>当存储的是JSON的时候，读取Cookie的方法：</p>
-
-<pre><code class="language-JS">hbCookies.getJSON('name'); // =&gt; { team: 'FE小分队' }
-hbCookies.getJSON(); // =&gt; { name: { team: 'FE小分队' } }
-</code></pre>
 
                                 </div>
                             </div>
